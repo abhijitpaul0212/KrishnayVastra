@@ -16,9 +16,9 @@
         <!-- Product 1 -->
         <div class="product-card">
             <h2>Baluchuri Saree</h2>
-            <div class="product-images">
-                <img src="images/baluchuri1.jpg" alt="Baluchuri Saree">
-                <img src="images/baluchuri2.jpg" alt="Baluchuri Saree Close-up">
+            <div class="product-slider">
+                <img src="images/baluchuri1.jpg" alt="Baluchuri Saree" class="slider-image">
+                <img src="images/baluchuri2.jpg" alt="Baluchuri Saree Close-up" class="slider-image">
             </div>
             <p class="price">Price: ₹8,500</p>
         </div>
@@ -26,9 +26,9 @@
         <!-- Product 2 -->
         <div class="product-card">
             <h2>Mulberry Silk Saree</h2>
-            <div class="product-images">
-                <img src="images/mulberry1.jpg" alt="Mulberry Silk Saree">
-                <img src="images/mulberry2.jpg" alt="Mulberry Silk Close-up">
+            <div class="product-slider">
+                <img src="images/mulberry1.jpg" alt="Mulberry Silk Saree" class="slider-image">
+                <img src="images/mulberry2.jpg" alt="Mulberry Silk Close-up" class="slider-image">
             </div>
             <p class="price">Price: ₹7,200</p>
         </div>
@@ -36,13 +36,19 @@
         <!-- Product 3 -->
         <div class="product-card">
             <h2>Jamdani Saree</h2>
-            <div class="product-images">
-                <img src="images/jamdani/Jamdani_Blue.jpg" alt="Jamdani Blue">
-                <img src="images/jamdani/Jamdani_Grey.jpg" alt="Jamdani Grey">
+            <div class="product-slider">
+                <img src="images/jamdani/Jamdani_Blue.jpg" alt="Jamdani Blue" class="slider-image">
+                <img src="images/jamdani/Jamdani_Grey.jpg" alt="Jamdani Grey" class="slider-image">
             </div>
             <p class="price">Price: ₹6,800</p>
         </div>
     </section>
+
+    <!-- Popup Modal -->
+    <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="popup-image">
+    </div>
 
     <footer>
         <h2>Place Your Order</h2>
@@ -53,5 +59,7 @@
             <li>Instagram: <a href="https://www.instagram.com/krishnayvastra" target="_blank">@krishnayvastra</a></li>
         </ul>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
