@@ -55,11 +55,14 @@ header {
     color: #ff6f61;
 }
 
+/* Horizontal Slider */
 .product-slider {
     display: flex;
-    overflow-x: auto;
+    overflow-x: auto; /* Horizontal scroll only */
+    overflow-y: hidden; /* Removes vertical scroll */
     gap: 10px;
     scroll-snap-type: x mandatory;
+    padding-bottom: 10px; /* Add some space to avoid scrollbar overlap */
 }
 
 .slider-image {
