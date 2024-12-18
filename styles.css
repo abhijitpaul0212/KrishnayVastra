@@ -19,6 +19,19 @@ header {
     text-align: center;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
 .products {
     display: flex;
     flex-wrap: wrap;
