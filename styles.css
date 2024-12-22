@@ -171,16 +171,21 @@ footer a {
 .cart {
     position: fixed;
     top: 10px;
-    right: 10px;
+    right: -250px; /* Hidden off-screen */
     background-color: #ff6f61;
     color: white;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
     padding: 10px;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 250px;
-    cursor: pointer;
+/*     cursor: pointer; */
     transition: opacity 0.3s ease-in-out;
+}
+
+/* Expanded Cart */
+.cart.expanded {
+    right: 0;
 }
 
 #cart-header {
@@ -188,6 +193,33 @@ footer a {
     font-size: 1em;
     text-align: center;
     cursor: pointer;
+}
+
+/* Toggle Arrow Button */
+.cart-toggle {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%);
+    background-color: #ff6f61;
+    color: white;
+    width: 30px;
+    height: 60px;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-toggle:hover {
+    background-color: #ff473e;
+}
+
+#cart-arrow {
+    font-size: 20px;
+    user-select: none;
 }
 
 /* Hide Cart When Modal is Open */
@@ -207,8 +239,12 @@ body.modal-open .cart {
     display: none;
 }
 
+/* Cart Content */
 #cart-content {
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #cart-items {
@@ -268,7 +304,7 @@ button.add-to-cart:hover {
     color: #ff6f61;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 10px 15px;
     cursor: pointer;
     width: 100%;
     text-align: center;
