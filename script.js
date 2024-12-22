@@ -70,6 +70,23 @@ const cartItemsContainer = document.getElementById('cart-items');
 const cartTotalDisplay = document.getElementById('cart-total');
 const sendOrderButton = document.getElementById('send-order');
 
+// Toggle Cart Visibility
+const cart = document.querySelector('.cart');
+const cartArrow = document.getElementById('cart-arrow');
+
+cartArrow.addEventListener('click', () => {
+    if (cart.classList.contains('collapsed')) {
+        cart.classList.remove('collapsed');
+        cart.classList.add('expanded');
+        cartArrow.innerHTML = '&#10096;'; // Change arrow direction
+    } else {
+        cart.classList.remove('expanded');
+        cart.classList.add('collapsed');
+        cartArrow.innerHTML = '&#10094;'; // Change arrow direction
+    }
+});
+
+
 // Update Cart Display with Correct Price Calculation
 const updateCartDisplay = () => {
     cartItemsContainer.innerHTML = '';
