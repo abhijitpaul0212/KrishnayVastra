@@ -260,3 +260,89 @@ button.add-to-cart:hover {
     font-weight: bold;
 }
 
+/* Adjust Add to Cart Button */
+.modal-actions button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.modal-actions button:hover {
+    background-color: #ff473e;
+}
+
+/* User Details Modal */
+.user-details-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-details-container h2 {
+    color: #ff6f61;
+    margin-bottom: 15px;
+}
+
+.user-details-container label {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.user-details-container input, .user-details-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.user-details-container textarea {
+    height: 80px;
+    resize: none;
+}
+
+.user-details-container .note {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+#submit-user-details {
+    display: block;
+    margin: 20px auto;
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-user-details:hover {
+    background-color: #ff473e;
+}
+
+/* Zoom In/Out for Modal Images */
+.modal-content {
+    transition: transform 0.2s;
+    cursor: zoom-in;
+}
+
+.modal-content.zoomed {
+    cursor: zoom-out;
+    transform: scale(2);
+    transition: transform 0.2s;
+}
