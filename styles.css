@@ -192,3 +192,42 @@ button.add-to-cart:hover {
     background-color: #ff473e;
 }
 
+.modal-content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    user-select: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.prev:hover, .next:hover {
+    background: #ff6f61;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+#modal-image-name {
+    text-align: center;
+    color: #fff;
+    margin: 15px 0;
+    font-size: 1.2em;
+}
