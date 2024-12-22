@@ -19,10 +19,12 @@ const updateModalContent = (index) => {
     modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
 };
 
+// Open Modal
 images.forEach((image, index) => {
     image.addEventListener('click', () => {
         currentImageIndex = index;
         modal.style.display = 'flex';
+        document.body.classList.add('modal-open'); // Add modal-open class
         updateModalContent(currentImageIndex);
     });
 });
@@ -51,6 +53,15 @@ nextButton.addEventListener('click', () => {
 // Close Modal
 closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
+    document.body.classList.remove('modal-open'); // Remove modal-open class
+});
+
+// Close Modal on Outside Click
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open'); // Remove modal-open class
+    }
 });
 
 // Cart Logic
