@@ -20,14 +20,16 @@
         <div class="product-card">
             <h2>Popcorn Saree</h2>
             <div class="product-slider">
-                <img src="images/popcorn/Popcorn_Black.jpg" alt="Popcorn Black" class="slider-image" data-name="Popcorn Black Saree" data-price="599">
+                <div class="image-container">
+                    <img src="images/popcorn/Popcorn_Black.jpg" alt="Popcorn Black" class="slider-image" data-name="Popcorn Black Saree" data-price="599">
+                    <span class="hover-text">Click here + </span>
+                </div>
                 <img src="images/popcorn/Popcorn_Blue.jpg" alt="Popcorn Blue" class="slider-image" data-name="Popcorn Blue Saree" data-price="599">
                 <img src="images/popcorn/Popcorn_Pink.jpg" alt="Popcorn Pink" class="slider-image" data-name="Popcorn Pink Saree" data-price="599">
                 <img src="images/popcorn/Popcorn_White.jpg" alt="Popcorn White" class="slider-image" data-name="Popcorn White Saree" data-price="599">
                 <img src="images/popcorn/Popcorn_Yellow.jpg" alt="Popcorn Yellow" class="slider-image" data-name="Popcorn Yellow Saree" data-price="599">
             </div>
             <p class="price">Price: ₹599</p>
-<!--             <button class="add-to-cart" data-name="Popcorn Saree" data-price="599">Add to Cart</button> -->
         </div>
 
         <!-- Product 2 -->
@@ -38,7 +40,6 @@
                 <img src="images/khadilace/KhadiLace_Green.jpg" alt="KhadiLace Green" class="slider-image" data-name="KhadiLace Green Saree" data-price="599">
             </div>
             <p class="price">Price: ₹599</p>
-<!--             <button class="add-to-cart" data-name="KhadiLace Saree" data-price="599">Add to Cart</button> -->
         </div>
 
         <!-- Product 3 -->
@@ -54,66 +55,11 @@
                 <img src="images/jamdani/SoftJamdani_Blue.jpg" alt="Soft Jamdani Blue" class="slider-image" data-name="Soft Jamdani Blue Saree" data-price="499">
             </div>
             <p class="price">Price: ₹499</p>
-<!--             <button class="add-to-cart" data-name="Jamdani Saree" data-price="499">Add to Cart</button> -->
-        </div>
-
-    </section>
-
-    <section class="products">
-        <!-- Product 1 -->
-        <div class="product-card">
-            <h2>Popcorn Saree</h2>
-            <div class="product-slider">
-                <img src="images/popcorn/Popcorn_Black.jpg" alt="Popcorn Black" class="slider-image">
-                <img src="images/popcorn/Popcorn_Blue.jpg" alt="Popcorn Blue" class="slider-image">
-                <img src="images/popcorn/Popcorn_Pink.jpg" alt="Popcorn Pink" class="slider-image">
-                <img src="images/popcorn/Popcorn_White.jpg" alt="Popcorn White" class="slider-image">
-                <img src="images/popcorn/Popcorn_Yellow.jpg" alt="Popcorn Yellow" class="slider-image">
-            </div>
-            <p class="price">Price: ₹599</p>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-            <h2>Khadi Lace Saree</h2>
-            <div class="product-slider">
-                <img src="images/khadilace/KhadiLace_Blue.jpg" alt="KhadiLace Blue" class="slider-image">
-                <img src="images/khadilace/KhadiLace_Green.jpg" alt="KhadiLace Green" class="slider-image">
-            </div>
-            <p class="price">Price: ₹599</p>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card">
-            <h2>Jamdani Saree</h2>
-            <div class="product-slider">
-                <img src="images/jamdani/Jamdani_Blue.jpg" alt="Jamdani Blue" class="slider-image">
-                <img src="images/jamdani/Jamdani_Grey.jpg" alt="Jamdani Grey" class="slider-image">
-                <img src="images/jamdani/Jamdani_Orange.jpg" alt="Jamdani Orange" class="slider-image">
-                <img src="images/jamdani/Jamdani_Peach.jpg" alt="Jamdani Peach" class="slider-image">
-                <img src="images/jamdani/Jamdani_Yellow.jpg" alt="Jamdani Yellow" class="slider-image">
-                <img src="images/jamdani/SoftJamdani_Yellow.jpg" alt="Soft Jamdani Yellow" class="slider-image">
-                <img src="images/jamdani/SoftJamdani_Blue.jpg" alt="Soft Jamdani Blue" class="slider-image">
-            </div>
-            <p class="price">Price: ₹499</p>
         </div>
 
     </section>
 
     <!-- Popup Modal -->
-<!--     <div id="image-modal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content-container">
-            <span class="prev">&#10094;</span>
-            <img class="modal-content" id="popup-image" alt="Modal Image">
-            <span class="next">&#10095;</span>
-        </div>
-        <p id="modal-image-name"></p>
-        <button id="modal-add-to-cart" data-name="" data-price="">Add to Cart</button>
-    </div>
- -->
-    <!-- Popup Modal -->
-
     <div id="image-modal" class="modal">
         <span class="close">&times;</span>
         <div class="modal-content-container">
@@ -154,26 +100,6 @@
             </form>
         </div>
     </div>
-
-
-
-    
-<!--     <div id="image-modal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content-container">
-            <span class="prev">&#10094;</span>
-            <img class="modal-content" id="popup-image" alt="Modal Image">
-            <span class="next">&#10095;</span>
-        </div>
-        <p id="modal-image-name"></p>
-        <div class="modal-actions">
-            <label for="modal-qty">Quantity: </label>
-            <select id="modal-qty">
-                ${[...Array(10)].map((_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
-            </select>
-            <button id="modal-add-to-cart" data-name="" data-price="">Add to Cart</button>
-        </div>
-    </div> -->
 
     <!-- Cart Section -->
     <section class="cart">
