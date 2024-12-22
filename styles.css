@@ -175,11 +175,19 @@ footer a {
     background-color: #ff6f61;
     color: white;
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 10px;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 250px;
+    cursor: pointer;
     transition: opacity 0.3s ease-in-out;
+}
+
+#cart-header {
+    margin: 0;
+    font-size: 1em;
+    text-align: center;
+    cursor: pointer;
 }
 
 /* Hide Cart When Modal is Open */
@@ -192,6 +200,15 @@ body.modal-open .cart {
     font-size: 1em;
     margin-bottom: 10px;
     color: white;
+}
+
+/* Cart Content Initially Hidden */
+.hidden {
+    display: none;
+}
+
+#cart-content {
+    margin-top: 10px;
 }
 
 #cart-items {
@@ -254,6 +271,7 @@ button.add-to-cart:hover {
     padding: 5px 10px;
     cursor: pointer;
     width: 100%;
+    text-align: center;
 }
 
 #send-order:disabled {
