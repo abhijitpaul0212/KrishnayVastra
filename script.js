@@ -78,14 +78,44 @@ const sendOrderButton = document.getElementById('send-order');
 // };
 
 // Update Cart Display with Correct Price Calculation
+// const updateCartDisplay = () => {
+//     cartItemsContainer.innerHTML = '';
+//     let total = 0;
+
+//     cart.forEach((item, index) => {
+//         const itemDiv = document.createElement('div');
+//         itemDiv.classList.add('cart-item');
+//         const itemTotal = item.price * item.qty; // Calculate total price
+//         itemDiv.innerHTML = `
+//             <span>${item.name} (x${item.qty}) - ₹${itemTotal}</span>
+//             <span class="remove-item" data-index="${index}">×</span>
+//         `;
+//         cartItemsContainer.appendChild(itemDiv);
+//         total += itemTotal;
+//     });
+
+//     cartTotalDisplay.textContent = `Total: ₹${total}`;
+//     sendOrderButton.disabled = cart.length === 0;
+
+//     // Attach Remove Item Event Listeners
+//     document.querySelectorAll('.remove-item').forEach(button => {
+//         button.addEventListener('click', (e) => {
+//             const index = parseInt(e.target.getAttribute('data-index'), 10);
+//             cart.splice(index, 1);
+//             updateCartDisplay();
+//         });
+//     });
+// };
+
+// Update Cart Display with Correct Price Calculation
 const updateCartDisplay = () => {
     cartItemsContainer.innerHTML = '';
     let total = 0;
 
     cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty; // Calculate total price
         const itemDiv = document.createElement('div');
         itemDiv.classList.add('cart-item');
-        const itemTotal = item.price * item.qty; // Calculate total price
         itemDiv.innerHTML = `
             <span>${item.name} (x${item.qty}) - ₹${itemTotal}</span>
             <span class="remove-item" data-index="${index}">×</span>
@@ -101,7 +131,7 @@ const updateCartDisplay = () => {
     document.querySelectorAll('.remove-item').forEach(button => {
         button.addEventListener('click', (e) => {
             const index = parseInt(e.target.getAttribute('data-index'), 10);
-            cart.splice(index, 1);
+            cart.splice(index, 1); // Remove item from the cart
             updateCartDisplay();
         });
     });
@@ -114,14 +144,29 @@ modalQtyDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value=
 
 
 // Modal Add to Cart Logic
+// modalAddToCartButton.addEventListener('click', () => {
+//     const name = modalAddToCartButton.getAttribute('data-name');
+//     const price = parseInt(modalAddToCartButton.getAttribute('data-price'), 10);
+//     const qty = parseInt(modalQtyDropdown.value, 10);
+//     cart.push({ name, price, qty });
+//     updateCartDisplay();
+//     alert(`${qty} x ${name} added to cart!`);
+//     modal.style.display = 'none';
+// });
+
+// Modal Add to Cart Logic
 modalAddToCartButton.addEventListener('click', () => {
     const name = modalAddToCartButton.getAttribute('data-name');
-    const price = parseInt(modalAddToCartButton.getAttribute('data-price'), 10);
-    const qty = parseInt(modalQtyDropdown.value, 10);
-    cart.push({ name, price, qty });
-    updateCartDisplay();
-    alert(`${qty} x ${name} added to cart!`);
-    modal.style.display = 'none';
+    const price = parseInt(modalAddToCartButton.getAttribute('data-price'), 10); // Ensure price is parsed correctly
+    const qty = parseInt(modalQtyDropdown.value, 10); // Ensure quantity is parsed correctly
+
+    if (!isNaN(price) && qty > 0) { // Validate price and quantity
+        cart.push({ name, price, qty });
+        updateCartDisplay();
+        alert(`${qty} x ${name} added to cart!`);
+    } else {
+        alert('Error: Invalid price or quantity!');
+    }
 });
 
 // modalAddToCartButton.addEventListener('click', () => {
