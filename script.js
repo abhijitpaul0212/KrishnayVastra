@@ -100,7 +100,13 @@ const updateCartDisplay = () => {
     });
 };
 
+// Cart Expand/Collapse Logic
+const cartHeader = document.getElementById('cart-header');
+const cartContent = document.getElementById('cart-content');
 
+cartHeader.addEventListener('click', () => {
+    cartContent.classList.toggle('hidden'); // Toggle visibility of cart content
+});
 
 // Dropdown Fix: Ensure it has values 1–9
 modalQtyDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
