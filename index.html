@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Saree Store</title>
+    <title>KRISHNAY VASTRA</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,38 +20,41 @@
         <div class="product-card">
             <h2>Popcorn Saree</h2>
             <div class="product-slider">
-                <img src="images/popcorn/Popcorn_Black.jpg" alt="Popcorn Black" class="slider-image">
-                <img src="images/popcorn/Popcorn_Blue.jpg" alt="Popcorn Blue" class="slider-image">
-                <img src="images/popcorn/Popcorn_Pink.jpg" alt="Popcorn Pink" class="slider-image">
-                <img src="images/popcorn/Popcorn_White.jpg" alt="Popcorn White" class="slider-image">
-                <img src="images/popcorn/Popcorn_Yellow.jpg" alt="Popcorn Yellow" class="slider-image">
+                <img src="images/popcorn/Popcorn_Black.jpg" alt="Popcorn Black" class="slider-image" data-name="Popcorn Black Saree">
+                <img src="images/popcorn/Popcorn_Blue.jpg" alt="Popcorn Blue" class="slider-image" data-name="Popcorn Blue Saree">
+                <img src="images/popcorn/Popcorn_Pink.jpg" alt="Popcorn Pink" class="slider-image" data-name="Popcorn Pink Saree">
+                <img src="images/popcorn/Popcorn_White.jpg" alt="Popcorn White" class="slider-image" data-name="Popcorn White Saree">
+                <img src="images/popcorn/Popcorn_Yellow.jpg" alt="Popcorn Yellow" class="slider-image" data-name="Popcorn Yellow Saree">
             </div>
             <p class="price">Price: ₹599</p>
+            <button class="add-to-cart" data-name="Popcorn Saree" data-price="599">Add to Cart</button>
         </div>
 
         <!-- Product 2 -->
         <div class="product-card">
             <h2>Khadi Lace Saree</h2>
             <div class="product-slider">
-                <img src="images/khadilace/KhadiLace_Blue.jpg" alt="KhadiLace Blue" class="slider-image">
-                <img src="images/khadilace/KhadiLace_Green.jpg" alt="KhadiLace Green" class="slider-image">
+                <img src="images/khadilace/KhadiLace_Blue.jpg" alt="KhadiLace Blue" class="slider-image" data-name="KhadiLace Blue Saree">
+                <img src="images/khadilace/KhadiLace_Green.jpg" alt="KhadiLace Green" class="slider-image" data-name="KhadiLace Green Saree">
             </div>
             <p class="price">Price: ₹599</p>
+            <button class="add-to-cart" data-name="KhadiLace Saree" data-price="599">Add to Cart</button>
         </div>
 
         <!-- Product 3 -->
         <div class="product-card">
             <h2>Jamdani Saree</h2>
             <div class="product-slider">
-                <img src="images/jamdani/Jamdani_Blue.jpg" alt="Jamdani Blue" class="slider-image">
-                <img src="images/jamdani/Jamdani_Grey.jpg" alt="Jamdani Grey" class="slider-image">
-                <img src="images/jamdani/Jamdani_Orange.jpg" alt="Jamdani Orange" class="slider-image">
-                <img src="images/jamdani/Jamdani_Peach.jpg" alt="Jamdani Peach" class="slider-image">
-                <img src="images/jamdani/Jamdani_Yellow.jpg" alt="Jamdani Yellow" class="slider-image">
-                <img src="images/jamdani/SoftJamdani_Yellow.jpg" alt="Soft Jamdani Yellow" class="slider-image">
-                <img src="images/jamdani/SoftJamdani_Blue.jpg" alt="Soft Jamdani Blue" class="slider-image">
+                <img src="images/jamdani/Jamdani_Blue.jpg" alt="Jamdani Blue" class="slider-image" data-name="Jamdani Blue Saree">
+                <img src="images/jamdani/Jamdani_Grey.jpg" alt="Jamdani Grey" class="slider-image" data-name="Jamdani Grey Saree">
+                <img src="images/jamdani/Jamdani_Orange.jpg" alt="Jamdani Orange" class="slider-image" data-name="Jamdani Orange Saree">
+                <img src="images/jamdani/Jamdani_Peach.jpg" alt="Jamdani Peach" class="slider-image" data-name="Jamdani Peach Saree">
+                <img src="images/jamdani/Jamdani_Yellow.jpg" alt="Jamdani Yellow" class="slider-image" data-name="Jamdani Yellow Saree">
+                <img src="images/jamdani/SoftJamdani_Yellow.jpg" alt="Soft Jamdani Yellow" class="slider-image" data-name="Soft Jamdani Yellow Saree">
+                <img src="images/jamdani/SoftJamdani_Blue.jpg" alt="Soft Jamdani Blue" class="slider-image" data-name="Soft Jamdani Blue Saree">
             </div>
             <p class="price">Price: ₹499</p>
+            <button class="add-to-cart" data-name="Jamdani Saree" data-price="499">Add to Cart</button>
         </div>
 
     </section>
@@ -102,6 +105,14 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="popup-image">
     </div>
+
+    <!-- Cart Section -->
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p id="cart-total">Total: ₹0</p>
+        <button id="send-order" disabled>Send Order</button>
+    </section>
 
     <footer>
         <h2>Place Your Order</h2>
