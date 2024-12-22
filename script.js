@@ -70,22 +70,6 @@ const cartItemsContainer = document.getElementById('cart-items');
 const cartTotalDisplay = document.getElementById('cart-total');
 const sendOrderButton = document.getElementById('send-order');
 
-// Toggle Cart Visibility
-const cart = document.querySelector('.cart');
-const cartArrow = document.getElementById('cart-arrow');
-
-cartArrow.addEventListener('click', () => {
-    if (cart.classList.contains('collapsed')) {
-        cart.classList.remove('collapsed');
-        cart.classList.add('expanded');
-        cartArrow.innerHTML = '&#10096;'; // Change arrow direction
-    } else {
-        cart.classList.remove('expanded');
-        cart.classList.add('collapsed');
-        cartArrow.innerHTML = '&#10094;'; // Change arrow direction
-    }
-});
-
 // Update Cart Display with Correct Price Calculation
 const updateCartDisplay = () => {
     cartItemsContainer.innerHTML = '';
@@ -116,13 +100,7 @@ const updateCartDisplay = () => {
     });
 };
 
-// Cart Expand/Collapse Logic
-const cartHeader = document.getElementById('cart-header');
-const cartContent = document.getElementById('cart-content');
 
-cartHeader.addEventListener('click', () => {
-    cartContent.classList.toggle('hidden'); // Toggle visibility of cart content
-});
 
 // Dropdown Fix: Ensure it has values 1–9
 modalQtyDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
@@ -136,7 +114,7 @@ modalAddToCartButton.addEventListener('click', () => {
     if (!isNaN(price) && qty > 0) { // Validate price and quantity
         cart.push({ name, price, qty });
         updateCartDisplay();
-        // alert(`${qty} x ${name} added to cart!`);
+        alert(`${qty} x ${name} added to cart!`);
     } else {
         alert('Error: Invalid price or quantity!');
     }
@@ -156,6 +134,26 @@ sendOrderButton.addEventListener('click', () => {
 closeUserDetailsModal.addEventListener('click', () => {
     userDetailsModal.style.display = 'none';
 });
+
+// Process User Details and Send Order
+// userDetailsForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     const fullName = document.getElementById('full-name').value;
+//     const email = document.getElementById('email').value || "Not Provided";
+//     const address = document.getElementById('address').value;
+//     const pin = document.getElementById('pin').value;
+//     const city = document.getElementById('city').value;
+//     const state = document.getElementById('state').value;
+
+//     const message = `Order Details:\n\n${cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n')}` +
+//         `\n\nTotal: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}` +
+//         `\n\nDelivery Details:\nName: ${fullName}\nEmail: ${email}\nAddress: ${address}, ${city}, ${state}, ${pin}` +
+//         `\n\n**Delivery Charges will be separately calculated and not included in Order Price.`;
+
+//     const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
+//     window.open(whatsappLink, '_blank');
+//     userDetailsModal.style.display = 'none';
+// });
 
 // Process User Details and Send Order
 userDetailsForm.addEventListener('submit', (e) => {
@@ -192,3 +190,11 @@ userDetailsForm.addEventListener('submit', (e) => {
     // Close the modal after sending
     userDetailsModal.style.display = 'none';
 });
+
+
+// sendOrderButton.addEventListener('click', () => {
+//     const message = cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n') +
+//         `\n\nTotal: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}`;
+//     const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
+//     window.open(whatsappLink, '_blank');
+// });
