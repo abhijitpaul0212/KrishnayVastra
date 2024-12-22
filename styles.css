@@ -179,6 +179,13 @@ footer a {
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 250px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide Cart When Modal is Open */
+body.modal-open .cart {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .cart h2 {
