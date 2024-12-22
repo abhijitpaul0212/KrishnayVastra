@@ -30,6 +30,8 @@ const modalAddToCartButton = document.getElementById('modal-add-to-cart');
 const closeModal = document.querySelector('.close');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
+const modalQtyDropdown = document.getElementById('modal-qty');
+const modalAddToCartButton = document.getElementById('modal-add-to-cart');
 
 let currentImageIndex = 0;
 
@@ -69,32 +71,76 @@ const cartItemsContainer = document.getElementById('cart-items');
 const cartTotalDisplay = document.getElementById('cart-total');
 const sendOrderButton = document.getElementById('send-order');
 
+// const updateCartDisplay = () => {
+//     cartItemsContainer.innerHTML = '';
+//     let total = 0;
+
+//     cart.forEach(item => {
+//         const itemDiv = document.createElement('div');
+//         itemDiv.textContent = `${item.name} - ₹${item.price}`;
+//         cartItemsContainer.appendChild(itemDiv);
+//         total += item.price;
+//     });
+
+//     cartTotalDisplay.textContent = `Total: ₹${total}`;
+//     sendOrderButton.disabled = cart.length === 0;
+// };
+
+// modalAddToCartButton.addEventListener('click', () => {
+//     const name = modalAddToCartButton.getAttribute('data-name');
+//     const price = parseInt(modalAddToCartButton.getAttribute('data-price'), 10);
+//     cart.push({ name, price });
+//     updateCartDisplay();
+//     modal.style.display = 'none';
+// });
+
+// sendOrderButton.addEventListener('click', () => {
+//     const message = cart.map(item => `${item.name}: ₹${item.price}`).join('\n') +
+//         `\n\nTotal: ₹${cart.reduce((sum, item) => sum + item.price, 0)}`;
+//     const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
+//     window.open(whatsappLink, '_blank');
+// });
+
 const updateCartDisplay = () => {
     cartItemsContainer.innerHTML = '';
     let total = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         const itemDiv = document.createElement('div');
-        itemDiv.textContent = `${item.name} - ₹${item.price}`;
+        itemDiv.classList.add('cart-item');
+        itemDiv.innerHTML = `
+            <span>${item.name} (x${item.qty}) - ₹${item.price * item.qty}</span>
+            <span class="remove-item" data-index="${index}">×</span>
+        `;
         cartItemsContainer.appendChild(itemDiv);
-        total += item.price;
+        total += item.price * item.qty;
     });
 
     cartTotalDisplay.textContent = `Total: ₹${total}`;
     sendOrderButton.disabled = cart.length === 0;
+
+    // Add event listeners to remove buttons
+    document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const index = parseInt(e.target.getAttribute('data-index'), 10);
+            cart.splice(index, 1);
+            updateCartDisplay();
+        });
+    });
 };
 
 modalAddToCartButton.addEventListener('click', () => {
     const name = modalAddToCartButton.getAttribute('data-name');
     const price = parseInt(modalAddToCartButton.getAttribute('data-price'), 10);
-    cart.push({ name, price });
+    const qty = parseInt(modalQtyDropdown.value, 10);
+    cart.push({ name, price, qty });
     updateCartDisplay();
     modal.style.display = 'none';
 });
 
 sendOrderButton.addEventListener('click', () => {
-    const message = cart.map(item => `${item.name}: ₹${item.price}`).join('\n') +
-        `\n\nTotal: ₹${cart.reduce((sum, item) => sum + item.price, 0)}`;
+    const message = cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n') +
+        `\n\nTotal: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}`;
     const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, '_blank');
 });
