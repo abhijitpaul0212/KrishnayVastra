@@ -101,7 +101,7 @@
     </section>
 
     <!-- Popup Modal -->
-    <div id="image-modal" class="modal">
+<!--     <div id="image-modal" class="modal">
         <span class="close">&times;</span>
         <div class="modal-content-container">
             <span class="prev">&#10094;</span>
@@ -111,7 +111,24 @@
         <p id="modal-image-name"></p>
         <button id="modal-add-to-cart" data-name="" data-price="">Add to Cart</button>
     </div>
-
+ -->
+    <!-- Popup Modal -->
+    <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content-container">
+            <span class="prev">&#10094;</span>
+            <img class="modal-content" id="popup-image" alt="Modal Image">
+            <span class="next">&#10095;</span>
+        </div>
+        <p id="modal-image-name"></p>
+        <div class="modal-actions">
+            <label for="modal-qty">Quantity: </label>
+            <select id="modal-qty">
+                ${[...Array(10)].map((_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
+            </select>
+            <button id="modal-add-to-cart" data-name="" data-price="">Add to Cart</button>
+        </div>
+    </div>
 
     <!-- Cart Section -->
     <section class="cart">
