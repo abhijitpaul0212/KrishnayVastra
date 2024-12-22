@@ -79,17 +79,17 @@ header {
     cursor: pointer;
 }
 
-/* Hover Text Styling */
+/* Centered Hover Text Styling */
 .hover-text {
     position: absolute;
-    bottom: 10px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-radius: 5px;
-    font-size: 0.9em;
+    font-size: 1em;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
     pointer-events: none; /* Prevent text from interfering with hover */
@@ -168,33 +168,68 @@ footer a {
 }
 
 /* Cart Section */
-.cart {
+/* .cart {
     padding: 20px;
     background-color: #f9f9f9;
     border-top: 1px solid #ddd;
+} */
+/* Cart Section Positioned in Header */
+.cart {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
 }
 
-.cart h2 {
+/* .cart h2 {
     color: #ff6f61;
     text-align: center;
     margin-bottom: 15px;
+} */
+.cart h2 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: white;
 }
 
-#cart-items {
+/* #cart-items {
     max-width: 600px;
     margin: 0 auto;
     padding: 10px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
+#cart-items {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-#cart-total {
+/* #cart-total {
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
     margin: 10px 0;
     color: #333;
+} */
+
+#cart-total {
+    text-align: right;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 button.add-to-cart {
@@ -211,7 +246,7 @@ button.add-to-cart:hover {
     background-color: #ff473e;
 }
 
-#send-order {
+/* #send-order {
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
@@ -229,6 +264,26 @@ button.add-to-cart:hover {
 
 #send-order:hover:not(:disabled) {
     background-color: #ff473e;
+} */
+#send-order {
+    display: block;
+    background-color: white;
+    color: #ff6f61;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#send-order:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+#send-order:hover:not(:disabled) {
+    background-color: #ffe1dd;
 }
 
 .modal-content-container {
