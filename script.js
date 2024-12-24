@@ -134,11 +134,11 @@ modalAddToCartButton.addEventListener('click', () => {
         updateCartDisplay();
 
         / Show notification instead of alert
-        showNotification(`${qty} x ${name} added to cart!`);
+        // showNotification(`${qty} x ${name} added to cart!`);
         // alert(`${qty} x ${name} added to cart!`);
     } else {
         showNotification(`Error: Invalid price or quantity!`);
-        // alert('Error: Invalid price or quantity!');
+        alert('Error: Invalid price or quantity!');
     }
 });
 
@@ -191,8 +191,8 @@ userDetailsForm.addEventListener('submit', (e) => {
 
     // Validate mandatory fields
     if (!fullName || !address || !pin || !city || !state) {
-        showNotification("Please fill in all mandatory fields!");
-        // alert("Please fill in all mandatory fields!");
+        // showNotification("Please fill in all mandatory fields!");
+        alert("Please fill in all mandatory fields!");
         return;
     }
 
