@@ -120,7 +120,7 @@ modalAddToCartButton.addEventListener('click', () => {
     if (!isNaN(price) && qty > 0) { // Validate price and quantity
         cart.push({ name, price, qty });
         updateCartDisplay();
-        // alert(`${qty} x ${name} added to cart!`);
+        alert(`${qty} x ${name} added to cart!`);
     } else {
         alert('Error: Invalid price or quantity!');
     }
