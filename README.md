@@ -1,3 +1,3 @@
 # KrishnayVastra
 
-https://abhijitpaul0212.github.io/KrishnayVastra
+Hosted on Netlify: https://krishnayvastra.netlify.app
