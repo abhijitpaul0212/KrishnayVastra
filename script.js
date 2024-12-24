@@ -119,16 +119,16 @@ modalAddToCartButton.addEventListener('click', () => {
 });
 
 // Mobile Cart Toggle Logic
-const cart = document.querySelector('.cart');
-const cartToggleIcon = document.getElementById('cart-toggle-icon');
+// const cart = document.querySelector('.cart');
+// const cartToggleIcon = document.getElementById('cart-toggle-icon');
 
-cartToggleIcon.addEventListener('click', () => {
-    if (cart.classList.contains('expanded')) {
-        cart.classList.remove('expanded');
-    } else {
-        cart.classList.add('expanded');
-    }
-});
+// cartToggleIcon.addEventListener('click', () => {
+//     if (cart.classList.contains('expanded')) {
+//         cart.classList.remove('expanded');
+//     } else {
+//         cart.classList.add('expanded');
+//     }
+// });
 
 // Open User Details Modal
 const userDetailsModal = document.getElementById('user-details-modal');
