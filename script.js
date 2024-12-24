@@ -20,16 +20,16 @@ const updateModalContent = (index) => {
 };
 
 // Notification Function
-function showNotification(message) {
-    const notification = document.getElementById('notification');
-    notification.textContent = message;
-    notification.classList.add('show');
+// function showNotification(message) {
+//     const notification = document.getElementById('notification');
+//     notification.textContent = message;
+//     notification.classList.add('show');
 
-    // Hide the notification after 3 seconds
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 3000);
-}
+//     // Hide the notification after 3 seconds
+//     setTimeout(() => {
+//         notification.classList.remove('show');
+//     }, 3000);
+// }
 
 // Open Modal
 images.forEach((image, index) => {
@@ -137,7 +137,7 @@ modalAddToCartButton.addEventListener('click', () => {
         // showNotification(`${qty} x ${name} added to cart!`);
         // alert(`${qty} x ${name} added to cart!`);
     } else {
-        showNotification(`Error: Invalid price or quantity!`);
+        // showNotification(`Error: Invalid price or quantity!`);
         alert('Error: Invalid price or quantity!');
     }
 });
