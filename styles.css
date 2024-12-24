@@ -342,6 +342,24 @@ button.add-to-cart:hover {
 /* Mobile View Adjustments */
 @media (max-width: 768px) {
     .cart {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+        display: none; /* Hidden initially */
+    }
+
+    .cart.expanded {
+        display: block;
+        background: white;
+        color: black;
+        padding: 15px;
+        z-index: 1000;
+    }
+
+    /* Floating Cart Button */
+    #cart-toggle {
         position: fixed;
         bottom: 10px;
         right: 10px;
@@ -354,20 +372,13 @@ button.add-to-cart:hover {
         justify-content: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 1000;
-    }
-
-    .cart.expanded {
-        width: 100%;
-        height: auto;
-        bottom: 0;
-        right: 0;
-        border-radius: 10px 10px 0 0;
-        padding: 15px;
+        cursor: pointer;
     }
 
     /* Cart Content Hidden by Default */
     #cart-content {
-        display: none;
+        max-height: 300px;
+        overflow-y: auto;
     }
 
     /* Show Cart Content When Expanded */
@@ -382,7 +393,6 @@ button.add-to-cart:hover {
     }
 
     #send-order {
-        display: block;
         margin-top: 10px;
         background-color: white;
         color: #ff6f61;
@@ -393,22 +403,10 @@ button.add-to-cart:hover {
         text-align: center;
     }
 
-    #cart-toggle-icon {
+     #cart-toggle-icon {
         font-size: 24px;
         color: white;
-        cursor: pointer;
-        user-select: none;
     }
-
-/*     #cart-content {
-        max-height: 200px;
-        overflow-y: auto;
-        margin-top: 10px;
-        background: white;
-        color: black;
-        padding: 10px;
-        border-radius: 5px;
-    } */
 
     #cart-total {
         text-align: right;
@@ -416,18 +414,6 @@ button.add-to-cart:hover {
         font-weight: bold;
         margin-top: 10px;
     }
-
-/*     #send-order {
-        display: block;
-        margin-top: 10px;
-        background-color: white;
-        color: #ff6f61;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        width: 100%;
-        text-align: center;
-    } */
 }
 
 .modal-content-container {

@@ -118,17 +118,13 @@ modalAddToCartButton.addEventListener('click', () => {
     }
 });
 
-// Mobile Cart Toggle Logic
-// const cart = document.querySelector('.cart');
-// const cartToggleIcon = document.getElementById('cart-toggle-icon');
+// Cart Toggle for Mobile View
+const mobileCart = document.querySelector('.cart');
+const cartToggle = document.getElementById('cart-toggle');
 
-// cartToggleIcon.addEventListener('click', () => {
-//     if (cart.classList.contains('expanded')) {
-//         cart.classList.remove('expanded');
-//     } else {
-//         cart.classList.add('expanded');
-//     }
-// });
+cartToggle.addEventListener('click', () => {
+    mobileCart.classList.toggle('expanded');
+});
 
 // Open User Details Modal
 const userDetailsModal = document.getElementById('user-details-modal');
