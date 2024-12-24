@@ -499,7 +499,7 @@ button.add-to-cart:hover {
 }
 
 /* Notification Styles */
-.notification {
+/* .notification {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -517,5 +517,5 @@ button.add-to-cart:hover {
 .notification.show {
     opacity: 1;
     transform: translateY(0);
-}
+} */
 
