@@ -19,18 +19,6 @@ const updateModalContent = (index) => {
     modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
 };
 
-// Notification Function
-// function showNotification(message) {
-//     const notification = document.getElementById('notification');
-//     notification.textContent = message;
-//     notification.classList.add('show');
-
-//     // Hide the notification after 3 seconds
-//     setTimeout(() => {
-//         notification.classList.remove('show');
-//     }, 3000);
-// }
-
 // Open Modal
 images.forEach((image, index) => {
     image.addEventListener('click', () => {
@@ -112,14 +100,6 @@ const updateCartDisplay = () => {
     });
 };
 
-// Cart Expand/Collapse Logic
-// const cartHeader = document.getElementById('cart-header');
-// const cartContent = document.getElementById('cart-content');
-
-// cartHeader.addEventListener('click', () => {
-//     cartContent.classList.toggle('hidden'); // Toggle visibility of cart content
-// });
-
 // Dropdown Fix: Ensure it has values 1–9
 modalQtyDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
 
@@ -132,12 +112,8 @@ modalAddToCartButton.addEventListener('click', () => {
     if (!isNaN(price) && qty > 0) { // Validate price and quantity
         cart.push({ name, price, qty });
         updateCartDisplay();
-
-        / Show notification instead of alert
-        // showNotification(`${qty} x ${name} added to cart!`);
-        // alert(`${qty} x ${name} added to cart!`);
+        alert(`${qty} x ${name} added to cart!`);
     } else {
-        // showNotification(`Error: Invalid price or quantity!`);
         alert('Error: Invalid price or quantity!');
     }
 });
@@ -158,26 +134,6 @@ closeUserDetailsModal.addEventListener('click', () => {
 });
 
 // Process User Details and Send Order
-// userDetailsForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     const fullName = document.getElementById('full-name').value;
-//     const email = document.getElementById('email').value || "Not Provided";
-//     const address = document.getElementById('address').value;
-//     const pin = document.getElementById('pin').value;
-//     const city = document.getElementById('city').value;
-//     const state = document.getElementById('state').value;
-
-//     const message = `Order Details:\n\n${cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n')}` +
-//         `\n\nTotal: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}` +
-//         `\n\nDelivery Details:\nName: ${fullName}\nEmail: ${email}\nAddress: ${address}, ${city}, ${state}, ${pin}` +
-//         `\n\n**Delivery Charges will be separately calculated and not included in Order Price.`;
-
-//     const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
-//     window.open(whatsappLink, '_blank');
-//     userDetailsModal.style.display = 'none';
-// });
-
-// Process User Details and Send Order
 userDetailsForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -191,7 +147,6 @@ userDetailsForm.addEventListener('submit', (e) => {
 
     // Validate mandatory fields
     if (!fullName || !address || !pin || !city || !state) {
-        // showNotification("Please fill in all mandatory fields!");
         alert("Please fill in all mandatory fields!");
         return;
     }
@@ -213,11 +168,3 @@ userDetailsForm.addEventListener('submit', (e) => {
     // Close the modal after sending
     userDetailsModal.style.display = 'none';
 });
-
-
-// sendOrderButton.addEventListener('click', () => {
-//     const message = cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n') +
-//         `\n\nTotal: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}`;
-//     const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
-//     window.open(whatsappLink, '_blank');
-// });
