@@ -19,6 +19,18 @@ const updateModalContent = (index) => {
     modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
 };
 
+// Notification Function
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.add('show');
+
+    // Hide the notification after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+}
+
 // Open Modal
 images.forEach((image, index) => {
     image.addEventListener('click', () => {
@@ -120,9 +132,13 @@ modalAddToCartButton.addEventListener('click', () => {
     if (!isNaN(price) && qty > 0) { // Validate price and quantity
         cart.push({ name, price, qty });
         updateCartDisplay();
-        alert(`${qty} x ${name} added to cart!`);
+
+        / Show notification instead of alert
+        showNotification(`${qty} x ${name} added to cart!`);
+        // alert(`${qty} x ${name} added to cart!`);
     } else {
-        alert('Error: Invalid price or quantity!');
+        showNotification(`Error: Invalid price or quantity!`);
+        // alert('Error: Invalid price or quantity!');
     }
 });
 
@@ -175,7 +191,8 @@ userDetailsForm.addEventListener('submit', (e) => {
 
     // Validate mandatory fields
     if (!fullName || !address || !pin || !city || !state) {
-        alert("Please fill in all mandatory fields!");
+        showNotification("Please fill in all mandatory fields!");
+        // alert("Please fill in all mandatory fields!");
         return;
     }
 
