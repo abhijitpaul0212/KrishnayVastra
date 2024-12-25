@@ -354,23 +354,19 @@ button.add-to-cart:hover {
         justify-content: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 1000;
+        cursor: pointer;
     }
-
-/*     .cart.expanded {
-        display: block;
-        background: white;
-        color: black;
-        padding: 15px;
-        z-index: 1000;
-    } */
 
     .cart.expanded {
         width: 100%;
         height: auto;
-        bottom: 0;
+        top: 0;
         right: 0;
-        border-radius: 10px 10px 0 0;
+        border-radius: 0;
         padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
 
     /* Floating Cart Button */
@@ -390,26 +386,17 @@ button.add-to-cart:hover {
         cursor: pointer;
     }
 
-    /* Cart Content Hidden by Default */
-/*     #cart-content {
-        max-height: 300px;
-        overflow-y: auto;
-    } */
-
     /* Show Cart Content When Expanded */
     .cart.expanded #cart-content {
         display: block;
-        max-height: 300px;
-        overflow-y: auto;
-        background: white;
-        color: black;
-        padding: 10px;
-        border-radius: 5px;
     }
 
     /* Cart Content Hidden by Default */
     #cart-content {
         display: none;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
     }
 
     #send-order {
@@ -423,16 +410,10 @@ button.add-to-cart:hover {
         text-align: center;
     }
 
-/*      #cart-toggle-icon {
-        font-size: 24px;
-        color: white;
-    } */
-
     #cart-toggle-icon {
         font-size: 24px;
         color: white;
         cursor: pointer;
-        user-select: none;
     }
 
     #cart-total {
@@ -440,6 +421,19 @@ button.add-to-cart:hover {
         font-size: 0.9em;
         font-weight: bold;
         margin-top: 10px;
+    }
+
+    /* User Details Modal Close Button */
+    #close-user-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff6f61;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
 }
 

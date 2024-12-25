@@ -118,7 +118,7 @@ modalAddToCartButton.addEventListener('click', () => {
     }
 });
 
-// Cart Toggle for Mobile View
+// Expand/Collapse Cart Tray for Mobile View
 const mobileCart = document.querySelector('.cart');
 const cartToggle = document.getElementById('cart-toggle');
 
@@ -131,9 +131,10 @@ const userDetailsModal = document.getElementById('user-details-modal');
 const closeUserDetailsModal = document.getElementById('close-user-modal');
 const userDetailsForm = document.getElementById('user-details-form');
 
-// Open User Details Modal
+// Open User Details Modal and Collapse Cart Tray
 sendOrderButton.addEventListener('click', () => {
-    userDetailsModal.style.display = 'flex';
+    mobileCart.classList.remove('expanded'); // Collapse the cart tray
+    userDetailsModal.style.display = 'flex'; // Show the user details modal
 });
 
 // Close User Details Modal
