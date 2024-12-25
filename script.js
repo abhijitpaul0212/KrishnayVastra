@@ -22,6 +22,9 @@ const userDetailsForm = document.getElementById('user-details-form');
 let currentImageIndex = 0;
 let cart = [];
 
+// Initialize EmailJS'
+emailjs.init("_hdFnAfh6cMfQQwVn");
+
 // Functions
 // Update the modal display with new values
 const updateModalContent = (index) => {
@@ -225,6 +228,3 @@ userDetailsForm.addEventListener('submit', (e) => {
     // Close the modal after sending
     userDetailsModal.style.display = 'none';
 });
-
-// Initialize EmailJS'
-emailjs.init("_hdFnAfh6cMfQQwVn");  // public key = "_hdFnAfh6cMfQQwVn"
