@@ -22,9 +22,6 @@ const userDetailsForm = document.getElementById('user-details-form');
 let currentImageIndex = 0;
 let cart = [];
 
-// Initialize EmailJS'
-emailjs.init("_hdFnAfh6cMfQQwVn");
-
 // Functions
 // Update the modal display with new values
 const updateModalContent = (index) => {
