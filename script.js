@@ -174,6 +174,60 @@ userDetailsForm.addEventListener('submit', (e) => {
     const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, '_blank');
 
+    // Send email using Emailjs
+    sendEmail({
+        fullName,
+        email,
+        address,
+        city,
+        state,
+        pin,
+        cartDetails,
+        cartTotal,
+    });
+
     // Close the modal after sending
     userDetailsModal.style.display = 'none';
 });
+
+// Initialize EmailJS'
+emailjs.init({
+  publicKey: '_hdFnAfh6cMfQQwVn',
+  // Do not allow headless browsers
+  blockHeadless: true,
+  blockList: {
+    // Block the suspended emails
+    list: ['foo@emailjs.com', 'bar@emailjs.com'],
+    // The variable contains the email address
+    watchVariable: 'userEmail',
+  },
+  limitRate: {
+    // Set the limit rate for the application
+    id: 'app',
+    // Allow 1 request per 10s
+    throttle: 10000,
+  },
+});
+
+// Function to Send Email
+function sendEmail(details) {
+    const emailParams = {
+        to_email: "krishnayvastra@gmail.com", // Recipient email
+        user_name: details.fullName,
+        user_email: details.email || "Not provided",
+        user_address: details.address,
+        user_city: details.city,
+        user_state: details.state,
+        user_pin: details.pin,
+        order_details: details.cartDetails.join("\n"),
+        total_price: details.cartTotal,
+    };
+
+    emailjs.send("service_lplcjok", "template_9zqnuu8", emailParams)
+        .then((response) => {
+            console.log("Email sent successfully:", response.status, response.text);
+        })
+        .catch((error) => {
+            console.error("Failed to send email:", error);
+        });
+}
