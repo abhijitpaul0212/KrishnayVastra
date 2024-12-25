@@ -1,5 +1,25 @@
 const images = document.querySelectorAll('.slider-image');
+const modal = document.getElementById('image-modal');
+const modalImage = document.getElementById('popup-image');
+const modalImageName = document.getElementById('modal-image-name');
+const modalAddToCartButton = document.getElementById('modal-add-to-cart');
+const closeModal = document.querySelector('.close');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+const modalQtyDropdown = document.getElementById('modal-qty');
+const cartItemsContainer = document.getElementById('cart-items');
+const cartTotalDisplay = document.getElementById('cart-total');
+const sendOrderButton = document.getElementById('send-order');
+// Expand/Collapse Cart Tray for Mobile View
+const mobileCart = document.querySelector('.cart');
+const cartToggle = document.getElementById('cart-toggle');
+// Open User Details Modal
+const userDetailsModal = document.getElementById('user-details-modal');
+const closeUserDetailsModal = document.getElementById('close-user-modal');
+const userDetailsForm = document.getElementById('user-details-form');
 
+let currentImageIndex = 0;
+let cart = [];
 // Functions
 // Update the modal display with new values
 const updateModalContent = (index) => {
