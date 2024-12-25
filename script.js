@@ -53,7 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Update the modal display with new values
         const updateModalContent = (index) => {
+            // Ensure index is within valid bounds
+            if (index < 0 || index >= images.length) {
+                console.error(`Invalid index: ${index}`);
+                return;
+            }
+            
             const selectedImage = images[index];
+            if (!selectedImage) {
+                console.error(`Image not found at index: ${index}`);
+                return;
+            }
+            // Update modal content
             modalImage.src = selectedImage.src;
             modalImageName.textContent = selectedImage.getAttribute('data-name');
             modalAddToCartButton.setAttribute('data-name', selectedImage.getAttribute('data-name'));
