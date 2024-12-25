@@ -1,27 +1,3 @@
-// All constants, variables & functions
-const images = document.querySelectorAll('.slider-image');
-const modal = document.getElementById('image-modal');
-const modalImage = document.getElementById('popup-image');
-const modalImageName = document.getElementById('modal-image-name');
-const modalAddToCartButton = document.getElementById('modal-add-to-cart');
-const closeModal = document.querySelector('.close');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-const modalQtyDropdown = document.getElementById('modal-qty');
-const cartItemsContainer = document.getElementById('cart-items');
-const cartTotalDisplay = document.getElementById('cart-total');
-const sendOrderButton = document.getElementById('send-order');
-// Expand/Collapse Cart Tray for Mobile View
-const mobileCart = document.querySelector('.cart');
-const cartToggle = document.getElementById('cart-toggle');
-// Open User Details Modal
-const userDetailsModal = document.getElementById('user-details-modal');
-const closeUserDetailsModal = document.getElementById('close-user-modal');
-const userDetailsForm = document.getElementById('user-details-form');
-
-let currentImageIndex = 0;
-let cart = [];
-
 // Functions
 // Update the modal display with new values
 const updateModalContent = (index) => {
@@ -30,6 +6,9 @@ const updateModalContent = (index) => {
     modalImageName.textContent = selectedImage.getAttribute('data-name');
     modalAddToCartButton.setAttribute('data-name', selectedImage.getAttribute('data-name'));
     modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
+
+    // Reset the quantity dropdown to 1 when updating content
+    resetQuantity();
 };
 
 // Reset Quantity to 1 on New Image View
@@ -92,33 +71,44 @@ const updateCartDisplay = () => {
 
 // Begining of the body
 
-// Open Modal
-images.forEach((image, index) => {
-    image.addEventListener('click', () => {
-        currentImageIndex = index;
-        modal.style.display = 'flex';
-        document.body.classList.add('modal-open'); // Add modal-open class
-        updateModalContent(currentImageIndex);
-    });
-});
-
 // Wait for the DOM to load before running the script
 document.addEventListener("DOMContentLoaded", () => {
-    const modalImage = document.getElementById("popup-image");
+    const images = document.querySelectorAll('.slider-image');
+    const modal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('popup-image');
+    const modalImageName = document.getElementById('modal-image-name');
+    const modalAddToCartButton = document.getElementById('modal-add-to-cart');
     const closeModal = document.querySelector('.close');
     const prevButton = document.querySelector('.prev');
     const nextButton = document.querySelector('.next');
     const modalQtyDropdown = document.getElementById('modal-qty');
-    const modalAddToCartButton = document.getElementById('modal-add-to-cart');
-    const cartToggle = document.getElementById('cart-toggle');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalDisplay = document.getElementById('cart-total');
+    const sendOrderButton = document.getElementById('send-order');
+    // Expand/Collapse Cart Tray for Mobile View
     const mobileCart = document.querySelector('.cart');
+    const cartToggle = document.getElementById('cart-toggle');
+    // Open User Details Modal
     const userDetailsModal = document.getElementById('user-details-modal');
     const closeUserDetailsModal = document.getElementById('close-user-modal');
     const userDetailsForm = document.getElementById('user-details-form');
-    const sendOrderButton = document.getElementById('send-order');
+    
+    let currentImageIndex = 0;
+    let cart = [];
 
     // Ensure the modalImage exists before adding an event listener
     if (modalImage && prevButton && nextButton && closeModal) {
+
+        // Open Modal
+        images.forEach((image, index) => {
+            image.addEventListener('click', () => {
+                currentImageIndex = index;
+                modal.style.display = 'flex';
+                document.body.classList.add('modal-open'); // Add modal-open class
+                updateModalContent(currentImageIndex);
+            });
+        });
+        
         // Zoom In/Out Feature
         modalImage.addEventListener("click", () => {
             modalImage.classList.toggle("zoomed");
