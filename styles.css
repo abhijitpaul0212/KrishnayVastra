@@ -245,9 +245,10 @@ footer .copyright {
 /* Default Cart Styles (Web View) */
 .cart {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: #ff6f61;
+    top: 50%;                      /* Vertically center */
+    right: 10px;                   /* Maintain the right offset */
+    background-color: #1883a1;
+    transform: translateY(-50%);   /* Shift up by 50% of its height to center */
     color: white;
     border-radius: 10px;
     padding: 10px;
@@ -345,7 +346,7 @@ button.add-to-cart:hover {
         position: fixed;
         bottom: 10px;
         right: 10px;
-        background-color: #ff6f61;
+        background-color: #1883a1;
         width: 60px;
         height: 60px;
         border-radius: 50%;
