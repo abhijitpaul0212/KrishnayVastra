@@ -1,3 +1,5 @@
+const images = document.querySelectorAll('.slider-image');
+
 // Functions
 // Update the modal display with new values
 const updateModalContent = (index) => {
