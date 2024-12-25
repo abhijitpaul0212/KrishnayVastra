@@ -105,9 +105,12 @@ images.forEach((image, index) => {
 // Wait for the DOM to load before running the script
 document.addEventListener("DOMContentLoaded", () => {
     const modalImage = document.getElementById("popup-image");
+    const closeModal = document.querySelector('.close');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
 
     // Ensure the modalImage exists before adding an event listener
-    if (modalImage) {
+    if (modalImage && prevButton && nextButton && closeModal) {
         // Zoom In/Out Feature
         modalImage.addEventListener("click", () => {
             modalImage.classList.toggle("zoomed");
