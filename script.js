@@ -1,4 +1,4 @@
-// Modal Logic
+// All constants, variables & functions
 const images = document.querySelectorAll('.slider-image');
 const modal = document.getElementById('image-modal');
 const modalImage = document.getElementById('popup-image');
@@ -8,9 +8,22 @@ const closeModal = document.querySelector('.close');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const modalQtyDropdown = document.getElementById('modal-qty');
+const cartItemsContainer = document.getElementById('cart-items');
+const cartTotalDisplay = document.getElementById('cart-total');
+const sendOrderButton = document.getElementById('send-order');
+// Expand/Collapse Cart Tray for Mobile View
+const mobileCart = document.querySelector('.cart');
+const cartToggle = document.getElementById('cart-toggle');
+// Open User Details Modal
+const userDetailsModal = document.getElementById('user-details-modal');
+const closeUserDetailsModal = document.getElementById('close-user-modal');
+const userDetailsForm = document.getElementById('user-details-form');
 
 let currentImageIndex = 0;
+let cart = [];
 
+// Functions
+// Update the modal display with new values
 const updateModalContent = (index) => {
     const selectedImage = images[index];
     modalImage.src = selectedImage.src;
@@ -19,56 +32,33 @@ const updateModalContent = (index) => {
     modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
 };
 
-// Open Modal
-images.forEach((image, index) => {
-    image.addEventListener('click', () => {
-        currentImageIndex = index;
-        modal.style.display = 'flex';
-        document.body.classList.add('modal-open'); // Add modal-open class
-        updateModalContent(currentImageIndex);
-    });
-});
-
 // Reset Quantity to 1 on New Image View
 const resetQuantity = () => {
     modalQtyDropdown.value = "1";
 };
 
-// Zoom In/Out Feature
-modalImage.addEventListener('click', () => {
-    modalImage.classList.toggle('zoomed');
-});
+// Function to Send Email
+function sendEmail(details) {
+    const emailParams = {
+        to_email: "krishnayvastra@gmail.com", // Recipient email
+        user_name: details.fullName,
+        user_email: details.email || "Not provided",
+        user_address: details.address,
+        user_city: details.city,
+        user_state: details.state,
+        user_pin: details.pin,
+        order_details: details.cartDetails,
+        total_price: details.cartTotal,
+    };
 
-// Modal Navigation Persistence
-prevButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    updateModalContent(currentImageIndex);
-});
-
-nextButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    updateModalContent(currentImageIndex);
-});
-
-// Close Modal
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.body.classList.remove('modal-open'); // Remove modal-open class
-});
-
-// Close Modal on Outside Click
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open'); // Remove modal-open class
-    }
-});
-
-// Cart Logic
-let cart = [];
-const cartItemsContainer = document.getElementById('cart-items');
-const cartTotalDisplay = document.getElementById('cart-total');
-const sendOrderButton = document.getElementById('send-order');
+    emailjs.send("service_lplcjok", "template_9zqnuu8", emailParams)
+        .then((response) => {
+            console.log("Email sent successfully:", response.status, response.text);
+        })
+        .catch((error) => {
+            console.error("Failed to send email:", error);
+        });
+}
 
 // Update Cart Display with Correct Price Calculation
 const updateCartDisplay = () => {
@@ -100,6 +90,59 @@ const updateCartDisplay = () => {
     });
 };
 
+// Begining of the body
+
+// Open Modal
+images.forEach((image, index) => {
+    image.addEventListener('click', () => {
+        currentImageIndex = index;
+        modal.style.display = 'flex';
+        document.body.classList.add('modal-open'); // Add modal-open class
+        updateModalContent(currentImageIndex);
+    });
+});
+
+// Wait for the DOM to load before running the script
+document.addEventListener("DOMContentLoaded", () => {
+    const modalImage = document.getElementById("popup-image");
+
+    // Ensure the modalImage exists before adding an event listener
+    if (modalImage) {
+        // Zoom In/Out Feature
+        modalImage.addEventListener("click", () => {
+            modalImage.classList.toggle("zoomed");
+        });
+        
+        // Modal Navigation Persistence
+        prevButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateModalContent(currentImageIndex);
+        });
+        
+        nextButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateModalContent(currentImageIndex);
+        });
+        
+        // Close Modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open'); // Remove modal-open class
+        });
+
+    } else {
+        console.warn("Modal image element not found. Please check the DOM structure.");
+    }
+
+// Close Modal on Outside Click
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open'); // Remove modal-open class
+    }
+});
+
+// Cart Logic
 // Dropdown Fix: Ensure it has values 1–9
 modalQtyDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
 
@@ -119,18 +162,11 @@ modalAddToCartButton.addEventListener('click', () => {
 });
 
 // Expand/Collapse Cart Tray for Mobile View
-const mobileCart = document.querySelector('.cart');
-const cartToggle = document.getElementById('cart-toggle');
-
 cartToggle.addEventListener('click', () => {
     mobileCart.classList.toggle('expanded');
 });
 
-// Open User Details Modal
-const userDetailsModal = document.getElementById('user-details-modal');
-const closeUserDetailsModal = document.getElementById('close-user-modal');
-const userDetailsForm = document.getElementById('user-details-form');
-
+// User Details Modal
 // Open User Details Modal and Collapse Cart Tray
 sendOrderButton.addEventListener('click', () => {
     mobileCart.classList.remove('expanded'); // Collapse the cart tray
@@ -192,26 +228,3 @@ userDetailsForm.addEventListener('submit', (e) => {
 
 // Initialize EmailJS'
 emailjs.init("_hdFnAfh6cMfQQwVn");  // public key = "_hdFnAfh6cMfQQwVn"
-
-// Function to Send Email
-function sendEmail(details) {
-    const emailParams = {
-        to_email: "krishnayvastra@gmail.com", // Recipient email
-        user_name: details.fullName,
-        user_email: details.email || "Not provided",
-        user_address: details.address,
-        user_city: details.city,
-        user_state: details.state,
-        user_pin: details.pin,
-        order_details: details.cartDetails,
-        total_price: details.cartTotal,
-    };
-
-    emailjs.send("service_lplcjok", "template_9zqnuu8", emailParams)
-        .then((response) => {
-            console.log("Email sent successfully:", response.status, response.text);
-        })
-        .catch((error) => {
-            console.error("Failed to send email:", error);
-        });
-}
