@@ -219,7 +219,7 @@ function sendEmail(details) {
         user_city: details.city,
         user_state: details.state,
         user_pin: details.pin,
-        order_details: details.cartDetails.join("\n"),
+        order_details: details.cartDetails,
         total_price: details.cartTotal,
     };
 
