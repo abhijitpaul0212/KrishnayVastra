@@ -240,7 +240,6 @@
 
     <!-- User Details Modal -->
     <div id="user-details-modal" class="modal">
-        <button id="close-user-modal">Close</button>
         <div class="user-details-container">
             <h2>Enter Your Details</h2>
             <form id="user-details-form">
@@ -257,7 +256,10 @@
                 <label for="state">State <span>*</span></label>
                 <input type="text" id="state" placeholder="Enter state" required>
                 <p class="note">**Delivery Charges will be separately calculated and not included in Order Price.</p>
-                <button type="submit" id="submit-user-details">Confirm Order</button>
+                <div class="form-actions">
+                    <button type="submit" id="submit-user-details">Confirm Order</button>
+                    <button type="button" id="close-user-modal">Close</button>
+                </div>
             </form>
         </div>
     </div>
