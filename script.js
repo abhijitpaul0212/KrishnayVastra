@@ -1,95 +1,25 @@
-const images = document.querySelectorAll('.slider-image');
-const modal = document.getElementById('image-modal');
-const modalImage = document.getElementById('popup-image');
-const modalImageName = document.getElementById('modal-image-name');
-const modalAddToCartButton = document.getElementById('modal-add-to-cart');
-const closeModal = document.querySelector('.close');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-const modalQtyDropdown = document.getElementById('modal-qty');
-const cartItemsContainer = document.getElementById('cart-items');
-const cartTotalDisplay = document.getElementById('cart-total');
-const sendOrderButton = document.getElementById('send-order');
-// Expand/Collapse Cart Tray for Mobile View
-const mobileCart = document.querySelector('.cart');
-const cartToggle = document.getElementById('cart-toggle');
-// Open User Details Modal
-const userDetailsModal = document.getElementById('user-details-modal');
-const closeUserDetailsModal = document.getElementById('close-user-modal');
-const userDetailsForm = document.getElementById('user-details-form');
+// const images = document.querySelectorAll('.slider-image');
+// const modal = document.getElementById('image-modal');
+// const modalImage = document.getElementById('popup-image');
+// const modalImageName = document.getElementById('modal-image-name');
+// const modalAddToCartButton = document.getElementById('modal-add-to-cart');
+// const closeModal = document.querySelector('.close');
+// const prevButton = document.querySelector('.prev');
+// const nextButton = document.querySelector('.next');
+// const modalQtyDropdown = document.getElementById('modal-qty');
+// const cartItemsContainer = document.getElementById('cart-items');
+// const cartTotalDisplay = document.getElementById('cart-total');
+// const sendOrderButton = document.getElementById('send-order');
+// // Expand/Collapse Cart Tray for Mobile View
+// const mobileCart = document.querySelector('.cart');
+// const cartToggle = document.getElementById('cart-toggle');
+// // Open User Details Modal
+// const userDetailsModal = document.getElementById('user-details-modal');
+// const closeUserDetailsModal = document.getElementById('close-user-modal');
+// const userDetailsForm = document.getElementById('user-details-form');
 
-let currentImageIndex = 0;
-let cart = [];
-// Functions
-// Update the modal display with new values
-const updateModalContent = (index) => {
-    const selectedImage = images[index];
-    modalImage.src = selectedImage.src;
-    modalImageName.textContent = selectedImage.getAttribute('data-name');
-    modalAddToCartButton.setAttribute('data-name', selectedImage.getAttribute('data-name'));
-    modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
-
-    // Reset the quantity dropdown to 1 when updating content
-    resetQuantity();
-};
-
-// Reset Quantity to 1 on New Image View
-const resetQuantity = () => {
-    modalQtyDropdown.value = "1";
-};
-
-// Function to Send Email
-function sendEmail(details) {
-    const emailParams = {
-        to_email: "krishnayvastra@gmail.com", // Recipient email
-        user_name: details.fullName,
-        user_email: details.email || "Not provided",
-        user_address: details.address,
-        user_city: details.city,
-        user_state: details.state,
-        user_pin: details.pin,
-        order_details: details.cartDetails,
-        total_price: details.cartTotal,
-    };
-
-    emailjs.send("service_lplcjok", "template_9zqnuu8", emailParams)
-        .then((response) => {
-            console.log("Email sent successfully:", response.status, response.text);
-        })
-        .catch((error) => {
-            console.error("Failed to send email:", error);
-        });
-}
-
-// Update Cart Display with Correct Price Calculation
-const updateCartDisplay = () => {
-    cartItemsContainer.innerHTML = '';
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        const itemTotal = item.price * item.qty; // Calculate total price
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('cart-item');
-        itemDiv.innerHTML = `
-            <span>${item.name} (x${item.qty}) - ₹${itemTotal}</span>
-            <span class="remove-item" data-index="${index}">×</span>
-        `;
-        cartItemsContainer.appendChild(itemDiv);
-        total += itemTotal;
-    });
-
-    cartTotalDisplay.textContent = `Total: ₹${total}`;
-    sendOrderButton.disabled = cart.length === 0;
-
-    // Attach Remove Item Event Listeners
-    document.querySelectorAll('.remove-item').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'), 10);
-            cart.splice(index, 1); // Remove item from the cart
-            updateCartDisplay();
-        });
-    });
-};
+// let currentImageIndex = 0;
+// let cart = [];
 
 // Begining of the body
 
@@ -121,7 +51,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ensure the modalImage exists before adding an event listener
     if (modalImage && prevButton && nextButton && closeModal) {
 
+        // Update the modal display with new values
+        const updateModalContent = (index) => {
+            // Ensure index is within valid bounds
+            if (index < 0 || index >= images.length) {
+                console.error(`Invalid index: ${index}`);
+                return;
+            }
+            console.log(index, images[index]);
+            const selectedImage = images[index];
+            if (!selectedImage) {
+                console.error(`Image not found at index: ${index}`);
+                return;
+            }
+            // Update modal content
+            modalImage.src = selectedImage.src;
+            modalImageName.textContent = selectedImage.getAttribute('data-name');
+            modalAddToCartButton.setAttribute('data-name', selectedImage.getAttribute('data-name'));
+            modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
+        
+            // Reset the quantity dropdown to 1 when updating content
+            resetQuantity();
+        };
+        
+        // Reset Quantity to 1 on New Image View
+        const resetQuantity = () => {
+            modalQtyDropdown.value = "1";
+        };
+
         // Open Modal
+        console.log(images);
         images.forEach((image, index) => {
             image.addEventListener('click', () => {
                 currentImageIndex = index;
@@ -242,6 +201,59 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.classList.remove('modal-open'); // Remove modal-open class
             }
         });
+
+        // Function to Send Email
+        function sendEmail(details) {
+            const emailParams = {
+                to_email: "krishnayvastra@gmail.com", // Recipient email
+                user_name: details.fullName,
+                user_email: details.email || "Not provided",
+                user_address: details.address,
+                user_city: details.city,
+                user_state: details.state,
+                user_pin: details.pin,
+                order_details: details.cartDetails,
+                total_price: details.cartTotal,
+            };
+        
+            emailjs.send("service_lplcjok", "template_9zqnuu8", emailParams)
+                .then((response) => {
+                    console.log("Email sent successfully:", response.status, response.text);
+                })
+                .catch((error) => {
+                    console.error("Failed to send email:", error);
+                });
+        }
+        
+        // Update Cart Display with Correct Price Calculation
+        const updateCartDisplay = () => {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+        
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.qty; // Calculate total price
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <span>${item.name} (x${item.qty}) - ₹${itemTotal}</span>
+                    <span class="remove-item" data-index="${index}">×</span>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+                total += itemTotal;
+            });
+        
+            cartTotalDisplay.textContent = `Total: ₹${total}`;
+            sendOrderButton.disabled = cart.length === 0;
+        
+            // Attach Remove Item Event Listeners
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'), 10);
+                    cart.splice(index, 1); // Remove item from the cart
+                    updateCartDisplay();
+                });
+            });
+        };
 
     } else {
         console.warn("Modal image element not found. Please check the DOM structure.");
