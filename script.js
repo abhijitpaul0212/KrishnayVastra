@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error(`Invalid index: ${index}`);
                 return;
             }
-            
+            console.log(index, images[index]);
             const selectedImage = images[index];
             if (!selectedImage) {
                 console.error(`Image not found at index: ${index}`);
@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         // Open Modal
+        console.log(images);
         images.forEach((image, index) => {
             image.addEventListener('click', () => {
                 currentImageIndex = index;
