@@ -137,94 +137,95 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("Modal image element not found. Please check the DOM structure.");
     }
 
-// Close Modal on Outside Click
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open'); // Remove modal-open class
-    }
-});
-
-// Cart Logic
-// Dropdown Fix: Ensure it has values 1–9
-modalQtyDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
-
-// Modal Add to Cart Logic
-modalAddToCartButton.addEventListener('click', () => {
-    const name = modalAddToCartButton.getAttribute('data-name');
-    const price = parseInt(modalAddToCartButton.getAttribute('data-price'), 10); // Ensure price is parsed correctly
-    const qty = parseInt(modalQtyDropdown.value, 10); // Ensure quantity is parsed correctly
-
-    if (!isNaN(price) && qty > 0) { // Validate price and quantity
-        cart.push({ name, price, qty });
-        updateCartDisplay();
-        alert(`${qty} x ${name} added to cart!`);
-    } else {
-        alert('Error: Invalid price or quantity!');
-    }
-});
-
-// Expand/Collapse Cart Tray for Mobile View
-cartToggle.addEventListener('click', () => {
-    mobileCart.classList.toggle('expanded');
-});
-
-// User Details Modal
-// Open User Details Modal and Collapse Cart Tray
-sendOrderButton.addEventListener('click', () => {
-    mobileCart.classList.remove('expanded'); // Collapse the cart tray
-    userDetailsModal.style.display = 'flex'; // Show the user details modal
-});
-
-// Close User Details Modal
-closeUserDetailsModal.addEventListener('click', () => {
-    userDetailsModal.style.display = 'none';
-});
-
-// Process User Details and Send Order
-userDetailsForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Gather user details
-    const fullName = document.getElementById('full-name').value.trim();
-    const email = document.getElementById('email').value.trim() || "Not Provided";
-    const address = document.getElementById('address').value.trim();
-    const pin = document.getElementById('pin').value.trim();
-    const city = document.getElementById('city').value.trim();
-    const state = document.getElementById('state').value.trim();
-
-    // Validate mandatory fields
-    if (!fullName || !address || !pin || !city || !state) {
-        alert("Please fill in all mandatory fields!");
-        return;
-    }
-
-    // Construct the cart details message
-    const cartDetails = cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n');
-    const cartTotal = `Total: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}`;
-
-    // Construct the user details message
-    const userDetails = `Delivery Details:\nName: ${fullName}\nEmail: ${email}\nAddress: ${address}, ${city}, ${state}, ${pin}\n\n**Delivery Charges will be separately calculated and not included in Order Price.`;
-
-    // Combine the messages
-    const message = `Order Details:\n\n${cartDetails}\n\n${cartTotal}\n\n${userDetails}`;
-
-    // Open WhatsApp link
-    const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
-    window.open(whatsappLink, '_blank');
-
-    // Send email using Emailjs
-    sendEmail({
-        fullName,
-        email,
-        address,
-        city,
-        state,
-        pin,
-        cartDetails,
-        cartTotal,
+    // Close Modal on Outside Click
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open'); // Remove modal-open class
+        }
     });
-
-    // Close the modal after sending
-    userDetailsModal.style.display = 'none';
-});
+    
+    // Cart Logic
+    // Dropdown Fix: Ensure it has values 1–9
+    modalQtyDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+    
+    // Modal Add to Cart Logic
+    modalAddToCartButton.addEventListener('click', () => {
+        const name = modalAddToCartButton.getAttribute('data-name');
+        const price = parseInt(modalAddToCartButton.getAttribute('data-price'), 10); // Ensure price is parsed correctly
+        const qty = parseInt(modalQtyDropdown.value, 10); // Ensure quantity is parsed correctly
+    
+        if (!isNaN(price) && qty > 0) { // Validate price and quantity
+            cart.push({ name, price, qty });
+            updateCartDisplay();
+            alert(`${qty} x ${name} added to cart!`);
+        } else {
+            alert('Error: Invalid price or quantity!');
+        }
+    });
+    
+    // Expand/Collapse Cart Tray for Mobile View
+    cartToggle.addEventListener('click', () => {
+        mobileCart.classList.toggle('expanded');
+    });
+    
+    // User Details Modal
+    // Open User Details Modal and Collapse Cart Tray
+    sendOrderButton.addEventListener('click', () => {
+        mobileCart.classList.remove('expanded'); // Collapse the cart tray
+        userDetailsModal.style.display = 'flex'; // Show the user details modal
+    });
+    
+    // Close User Details Modal
+    closeUserDetailsModal.addEventListener('click', () => {
+        userDetailsModal.style.display = 'none';
+    });
+    
+    // Process User Details and Send Order
+    userDetailsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+    
+        // Gather user details
+        const fullName = document.getElementById('full-name').value.trim();
+        const email = document.getElementById('email').value.trim() || "Not Provided";
+        const address = document.getElementById('address').value.trim();
+        const pin = document.getElementById('pin').value.trim();
+        const city = document.getElementById('city').value.trim();
+        const state = document.getElementById('state').value.trim();
+    
+        // Validate mandatory fields
+        if (!fullName || !address || !pin || !city || !state) {
+            alert("Please fill in all mandatory fields!");
+            return;
+        }
+    
+        // Construct the cart details message
+        const cartDetails = cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n');
+        const cartTotal = `Total: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}`;
+    
+        // Construct the user details message
+        const userDetails = `Delivery Details:\nName: ${fullName}\nEmail: ${email}\nAddress: ${address}, ${city}, ${state}, ${pin}\n\n**Delivery Charges will be separately calculated and not included in Order Price.`;
+    
+        // Combine the messages
+        const message = `Order Details:\n\n${cartDetails}\n\n${cartTotal}\n\n${userDetails}`;
+    
+        // Open WhatsApp link
+        const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
+        window.open(whatsappLink, '_blank');
+    
+        // Send email using Emailjs
+        sendEmail({
+            fullName,
+            email,
+            address,
+            city,
+            state,
+            pin,
+            cartDetails,
+            cartTotal,
+        });
+    
+        // Close the modal after sending
+        userDetailsModal.style.display = 'none';
+    });
+}); // <-- Add this closing braces for DOMContentLoaded
