@@ -528,6 +528,26 @@ button.add-to-cart:hover {
 }
 
 /* User Details Modal */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#close-user-modal {
+    background-color: #ccc;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-user-modal:hover {
+    background-color: #aaa;
+}
+
 .user-details-container {
     background: white;
     padding: 20px;
@@ -572,8 +592,8 @@ button.add-to-cart:hover {
 }
 
 #submit-user-details {
-    display: block;
-    margin: 20px auto;
+/*     display: block;
+    margin: 20px auto; */
     background-color: #ff6f61;
     color: white;
     padding: 10px 15px;
