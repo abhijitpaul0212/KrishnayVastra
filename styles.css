@@ -26,13 +26,13 @@ header {
     gap: 10px;
 }
 
-a .header_text {
+a h1 {
     text-decoration: none; /* Remove underline */
     color: inherit;        /* Use the parent element's color */
 }
 
 /* Optional: Customize the text appearance */
-a .header_text:hover {
+a h1:hover {
     color: #ff6f61; /* Add a hover color (optional) */
     cursor: pointer; /* Add a pointer cursor */
 }
