@@ -11,4 +11,4 @@ EmailJS: Service for emails. Visit https://dashboard.emailjs.com/admin
 
 
 NOTE:
-B34 is the latest stable branch
+B38 is the latest stable branch
