@@ -8,3 +8,7 @@ Hosted on Netlify: https://krishnayvastra.netlify.app
 ## Services
 
 EmailJS: Service for emails. Visit https://dashboard.emailjs.com/admin
+
+
+NOTE:
+B34 is the latest stable branch
