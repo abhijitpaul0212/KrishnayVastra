@@ -26,6 +26,17 @@ header {
     gap: 10px;
 }
 
+a .header_text {
+    text-decoration: none; /* Remove underline */
+    color: inherit;        /* Use the parent element's color */
+}
+
+/* Optional: Customize the text appearance */
+a .header_text:hover {
+    color: #ff6f61; /* Add a hover color (optional) */
+    cursor: pointer; /* Add a pointer cursor */
+}
+
 .logo {
     width: 70px;
     height: 70px;
