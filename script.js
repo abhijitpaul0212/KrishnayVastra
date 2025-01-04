@@ -75,33 +75,37 @@ document.addEventListener("DOMContentLoaded", () => {
             modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
 
             // Handle sold-out products
+            const soldOutMessage = document.getElementById("sold-out-message");
             if (isSoldOut) {
                 modalAddToCartButton.style.display = "none";
                 modalQtyDropdown.style.display = "none";
-                const soldOutMessage = document.createElement('p');
-                soldOutMessage.id = "sold-out-message";
-                soldOutMessage.textContent = "SOLD OUT";
-                soldOutMessage.style.color = "red";
-                soldOutMessage.style.fontWeight = "bold";
-                soldOutMessage.style.textAlign = "center";
-        
-                // Add the "Sold Out" message to the modal
-                const modalActions = document.querySelector('.modal-actions');
-                modalActions.appendChild(soldOutMessage);
-                console.log(modalActions);
+
+                // If the message doesn't already exist, add it
+                if (!soldOutMessage) {
+                    const soldOutMessage = document.createElement('p');
+                    soldOutMessage.id = "sold-out-message";
+                    soldOutMessage.textContent = "SOLD OUT";
+                    soldOutMessage.style.color = "red";
+                    soldOutMessage.style.fontWeight = "bold";
+                    soldOutMessage.style.textAlign = "center";
+            
+                    // Add the "Sold Out" message to the modal
+                    const modalActions = document.querySelector('.modal-actions');
+                    modalActions.appendChild(soldOutMessage);
+                    console.log(modalActions);
+                }
             } else {
                 modalAddToCartButton.style.display = "inline-block";
                 modalQtyDropdown.style.display = "inline-block";
         
                 // Remove the "Sold Out" message if it exists
-                const existingMessage = document.getElementById("sold-out-message");
-                if (existingMessage) {
-                    existingMessage.remove();
+                if (soldOutMessage) {
+                    soldOutMessage.remove();
                 }
+
+                // Reset quantity dropdown for non-sold-out products
+                resetQuantity();
             }
-        
-            // Reset the quantity dropdown to 1 when updating content
-            if (!isSoldOut) resetQuantity();
         };
         
         // Reset Quantity to 1 on New Image View
