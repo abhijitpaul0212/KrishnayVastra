@@ -35,7 +35,9 @@ a {
 /* Ensure the h1 inside the link inherits proper styles */
 a h1 {
     margin: 0;             /* Optional: Ensure proper spacing */
-    font-size: inherit;    /* Keep the h1 font size consistent */
+    font-size: 2em;        /* Ensuring default font size of h1 is persistent */
+    display: block;
+    font-weight: bold;
 }
 
 /* Optional: Add hover styling */
