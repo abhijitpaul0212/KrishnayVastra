@@ -59,7 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
             console.log(index, images[index]);
+
+            // Get product details
             const selectedImage = images[index];
+            const isSoldOut = selectedImage.getAttribute('data-sold-out') === "true";
+            
             if (!selectedImage) {
                 console.error(`Image not found at index: ${index}`);
                 return;
@@ -69,9 +73,35 @@ document.addEventListener("DOMContentLoaded", () => {
             modalImageName.textContent = selectedImage.getAttribute('data-name');
             modalAddToCartButton.setAttribute('data-name', selectedImage.getAttribute('data-name'));
             modalAddToCartButton.setAttribute('data-price', selectedImage.getAttribute('data-price'));
+
+            // Handle sold-out products
+            if (isSoldOut) {
+                modalAddToCartButton.style.display = "none";
+                modalQtyDropdown.style.display = "none";
+                const soldOutMessage = document.createElement('p');
+                soldOutMessage.id = "sold-out-message";
+                soldOutMessage.textContent = "SOLD OUT";
+                soldOutMessage.style.color = "red";
+                soldOutMessage.style.fontWeight = "bold";
+                soldOutMessage.style.textAlign = "center";
+        
+                // Add the "Sold Out" message to the modal
+                const modalActions = document.querySelector('.modal-actions');
+                modalActions.appendChild(soldOutMessage);
+                console.log(modalActions);
+            } else {
+                modalAddToCartButton.style.display = "inline-block";
+                modalQtyDropdown.style.display = "inline-block";
+        
+                // Remove the "Sold Out" message if it exists
+                const existingMessage = document.getElementById("sold-out-message");
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+            }
         
             // Reset the quantity dropdown to 1 when updating content
-            resetQuantity();
+            if (!isSoldOut) resetQuantity();
         };
         
         // Reset Quantity to 1 on New Image View
