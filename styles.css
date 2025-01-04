@@ -226,6 +226,14 @@ footer .copyright {
     cursor: pointer;
 }
 
+#sold-out-message {
+    font-size: 1.2em;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
 /* Cart Section Positioned in Header */
 /* .cart {
     position: fixed;
