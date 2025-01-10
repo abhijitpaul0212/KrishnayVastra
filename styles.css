@@ -677,3 +677,30 @@ button.add-to-cart:hover {
     transform: scale(2);
     transition: transform 0.2s;
 }
+
+/* Styles for Product Pages */
+
+.product-detail {
+    text-align: center;
+    margin: 20px;
+}
+
+.product-detail img {
+    max-width: 100%;
+    height: auto;
+    cursor: zoom-in;
+}
+
+.product-detail .description {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.product-detail .actions {
+    margin-top: 20px;
+}
+
+.actions select,
+.actions button {
+    margin: 10px;
+}
