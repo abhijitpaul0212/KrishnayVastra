@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamdani Blue Saree</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo-link">
+            <img src="../images/logo.png" alt="Logo" class="logo">
+            <h1>KRISHNAY VASTRA</h1>
+        </a>
+    </header>
+    <section class="product-detail">
+        <h2>Jamdani Blue Saree</h2>
+        <div class="image-container">
+            <img src="../images/jamdani/Jamdani_Blue.webp" alt="Jamdani Blue" id="main-image" class="main-image" data-name="Jamdani Blue Saree" data-price="499">
+        </div>
+        <p class="description">Elegant Jamdani Blue Saree with intricate designs.</p>
+        <p class="price">Price: ₹499</p>
+        <div class="actions">
+            <label for="quantity">Quantity:</label>
+            <select id="quantity">
+                ${[...Array(9)].map((_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
+            </select>
+            <button id="add-to-cart" data-name="Jamdani Blue Saree" data-price="499">Add to Cart</button>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 KRISHNAY VASTRA</p>
+    </footer>
+</body>
+</html>
