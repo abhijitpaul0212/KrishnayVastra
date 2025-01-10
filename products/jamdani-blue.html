@@ -19,24 +19,25 @@
     </header>
     
     <main class="product-page">
-        <!-- Left Section: Main Image -->
-        <section class="product-image-section">
-            <img id="main-product-image" src="../images/jamdani/Jamdani_Blue.webp" alt="Jamdani Blue Saree">
-        </section>
-        <!-- Right Section: Product Info -->
-        <section class="product-info">
-            <h1>Jamdani Blue Saree</h1>
-            <p class="description">Elegant Jamdani Blue Saree with intricate designs.</p>
-            <p class="price">Price: ₹499</p>
-            <div class="actions">
-                <label for="quantity">Quantity:</label>
-                <select id="quantity">
-                    ${[...Array(9)].map((_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
-                </select>
-                <button id="add-to-cart" data-name="Jamdani Blue Saree" data-price="499">Add to Cart</button>
-            </div>
-            <a href="../index.html" class="home-button">Back to Home</a>
-        </section>
+        <div class="top-section">
+            <!-- Left Section: Main Image -->
+            <section class="product-image-section">
+                <img id="main-product-image" src="../images/jamdani/Jamdani_Blue.webp" alt="Jamdani Blue Saree">
+            </section>
+            <!-- Right Section: Product Info -->
+            <section class="product-info">
+                <h1>Jamdani Blue Saree</h1>
+                <p class="description">Elegant Jamdani Blue Saree with intricate designs.</p>
+                <p class="price">Price: ₹499</p>
+                <div class="actions">
+                    <label for="quantity">Quantity:</label>
+                    <select id="quantity">
+                        ${[...Array(9)].map((_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
+                    </select>
+                    <button id="add-to-cart" data-name="Jamdani Blue Saree" data-price="499">Add to Cart</button>
+                </div>
+            </section>
+        </div>
         <!-- Bottom Section: Product Group Thumbnails -->
         <section class="related-products">
             <a href="jamdani-grey.html">
