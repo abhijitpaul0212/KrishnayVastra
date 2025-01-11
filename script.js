@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartTotalDisplay = document.getElementById('cart-total');
     const sendOrderButton = document.getElementById('send-order');
 
+    // User Details Form
+    const userDetailsForm = document.getElementById('user-details-form');
+
     let cart = []; // To track cart items
 
     // Enable zoom functionality for the main product image
@@ -75,6 +78,54 @@ document.addEventListener("DOMContentLoaded", () => {
     sendOrderButton.addEventListener('click', () => {
         mobileCart.classList.remove('expanded'); // Collapse the cart tray
         userDetailsModal.style.display = 'flex'; // Show the user details modal
+    });
+
+    // Process User Details and Send Order
+    userDetailsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+    
+        // Gather user details
+        const fullName = document.getElementById('full-name').value.trim();
+        const email = document.getElementById('email').value.trim() || "Not Provided";
+        const address = document.getElementById('address').value.trim();
+        const pin = document.getElementById('pin').value.trim();
+        const city = document.getElementById('city').value.trim();
+        const state = document.getElementById('state').value.trim();
+    
+        // Validate mandatory fields
+        if (!fullName || !address || !pin || !city || !state) {
+            alert("Please fill in all mandatory fields!");
+            return;
+        }
+    
+        // Construct the cart details message
+        const cartDetails = cart.map(item => `${item.name} (x${item.qty}): ₹${item.price * item.qty}`).join('\n');
+        const cartTotal = `Total: ₹${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}`;
+    
+        // Construct the user details message
+        const userDetails = `Delivery Details:\nName: ${fullName}\nEmail: ${email}\nAddress: ${address}, ${city}, ${state}, ${pin}\n\n**Delivery Charges will be separately calculated and not included in Order Price.`;
+    
+        // Combine the messages
+        const message = `Order Details:\n\n${cartDetails}\n\n${cartTotal}\n\n${userDetails}`;
+    
+        // Open WhatsApp link
+        const whatsappLink = `https://wa.me/9284641924?text=${encodeURIComponent(message)}`;
+        window.open(whatsappLink, '_blank');
+    
+        // Send email using Emailjs
+        sendEmail({
+            fullName,
+            email,
+            address,
+            city,
+            state,
+            pin,
+            cartDetails,
+            cartTotal,
+        });
+    
+        // Close the modal after sending
+        userDetailsModal.style.display = 'none';
     });
 
     // Function to Send Email
