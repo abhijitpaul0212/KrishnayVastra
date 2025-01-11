@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Dropdown Fix: Ensure it has values 1–9
+    quantityDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+
+
     // Add to Cart Logic on Product Page
     if (addToCartButton) {
         addToCartButton.addEventListener('click', () => {
