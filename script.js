@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const outOfStockMessage = document.getElementById('out-of-stock-message');
     const cartItemsContainer = document.getElementById('cart-items');
     const cartTotalDisplay = document.getElementById('cart-total');
+    const sendOrderButton = document.getElementById('send-order');
 
     let cart = []; // To track cart items
 
@@ -58,6 +59,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Error: Invalid quantity or price!");
             }
         });
+
+        // Expand/Collapse Cart Tray for Mobile View
+        cartToggle.addEventListener('click', () => {
+            mobileCart.classList.toggle('expanded');
+        });
+    
+        // Open User Details Modal and Collapse Cart Tray
+        sendOrderButton.addEventListener('click', () => {
+            mobileCart.classList.remove('expanded'); // Collapse the cart tray
+            userDetailsModal.style.display = 'flex'; // Show the user details modal
+        });
+    }
+
+    // Function to Send Email
+    function sendEmail(details) {
+        const emailParams = {
+            to_email: "krishnayvastra@gmail.com", // Recipient email
+            user_name: details.fullName,
+            user_email: details.email || "Not provided",
+            user_address: details.address,
+            user_city: details.city,
+            user_state: details.state,
+            user_pin: details.pin,
+            order_details: details.cartDetails,
+            total_price: details.cartTotal,
+        };
+    
+        emailjs.send("service_lplcjok", "template_9zqnuu8", emailParams)
+            .then((response) => {
+                console.log("Email sent successfully:", response.status, response.text);
+            })
+            .catch((error) => {
+                console.error("Failed to send email:", error);
+            });
     }
 
     // Update Cart Display
@@ -78,6 +113,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         cartTotalDisplay.textContent = `Total: ₹${total}`;
+        sendOrderButton.disabled = cart.length === 0;
+    
+        // Attach Remove Item Event Listeners
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.target.getAttribute('data-index'), 10);
+                cart.splice(index, 1); // Remove item from the cart
+                updateCartDisplay();
+            });
+        });
+
     };
 
     // Handle Out of Stock
