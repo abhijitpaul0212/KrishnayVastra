@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // const addToCartButton = document.getElementById('add-to-cart');
     const addToCartButton = document.getElementById("modal-add-to-cart");
     const quantityDropdown = document.getElementById('quantity');
+    // const quantityDropdown = document.getElementById("modal-qty"); // Corrected ID
     const outOfStockMessage = document.getElementById('out-of-stock-message');
     const cartItemsContainer = document.getElementById('cart-items');
     const cartTotalDisplay = document.getElementById('cart-total');
@@ -101,8 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (addToCartButton) {
         handleOutOfStock();
     }
-
-    const quantityDropdown = document.getElementById("modal-qty"); // Corrected ID
 
     if (quantityDropdown) {
         // Populate the quantity dropdown with numbers 1 to 9
