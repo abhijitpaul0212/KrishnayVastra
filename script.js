@@ -148,6 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
             order_details: details.cartDetails,
             total_price: details.cartTotal,
         };
+
+        // Ensure EmailJS is initialized
+        if (!emailjs) {
+            console.error('EmailJS is not loaded.');
+            return;
+        }
     
         emailjs.send("service_lplcjok", "template_9zqnuu8", emailParams)
             .then((response) => {
