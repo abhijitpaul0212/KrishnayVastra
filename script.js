@@ -103,13 +103,13 @@ document.addEventListener("DOMContentLoaded", () => {
         handleOutOfStock();
     }
 
-    if (quantityDropdown) {
-        // Populate the quantity dropdown with numbers 1 to 9
-        for (let i = 1; i <= 9; i++) {
-            const option = document.createElement("option");
-            option.value = i;
-            option.textContent = i;
-            quantityDropdown.appendChild(option);
-        }
-    }
+    // if (quantityDropdown) {
+    //     // Populate the quantity dropdown with numbers 1 to 9
+    //     for (let i = 1; i <= 9; i++) {
+    //         const option = document.createElement("option");
+    //         option.value = i;
+    //         option.textContent = i;
+    //         quantityDropdown.appendChild(option);
+    //     }
+    // }
 });
