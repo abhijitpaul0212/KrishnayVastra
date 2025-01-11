@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // const quantityDropdown = document.getElementById("modal-qty"); // Corrected ID
     const outOfStockMessage = document.getElementById('out-of-stock-message');
     const cartItemsContainer = document.getElementById('cart-items');
+
+    // Expand/Collapse Cart Tray for Mobile View
+    const mobileCart = document.querySelector('.cart');
+    const cartToggle = document.getElementById('cart-toggle');
+    
     const cartTotalDisplay = document.getElementById('cart-total');
     const sendOrderButton = document.getElementById('send-order');
 
@@ -59,18 +64,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Error: Invalid quantity or price!");
             }
         });
-
-        // // Expand/Collapse Cart Tray for Mobile View
-        // cartToggle.addEventListener('click', () => {
-        //     mobileCart.classList.toggle('expanded');
-        // });
-    
-        // // Open User Details Modal and Collapse Cart Tray
-        // sendOrderButton.addEventListener('click', () => {
-        //     mobileCart.classList.remove('expanded'); // Collapse the cart tray
-        //     userDetailsModal.style.display = 'flex'; // Show the user details modal
-        // });
     }
+
+    // Expand/Collapse Cart Tray for Mobile View
+    cartToggle.addEventListener('click', () => {
+        mobileCart.classList.toggle('expanded');
+    });
+
+    // Open User Details Modal and Collapse Cart Tray
+    sendOrderButton.addEventListener('click', () => {
+        mobileCart.classList.remove('expanded'); // Collapse the cart tray
+        userDetailsModal.style.display = 'flex'; // Show the user details modal
+    });
 
     // Function to Send Email
     function sendEmail(details) {
