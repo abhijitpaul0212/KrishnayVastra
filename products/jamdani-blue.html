@@ -29,12 +29,18 @@
                 <h1>Jamdani Blue Saree</h1>
                 <p class="description">Elegant Jamdani Blue Saree with intricate designs.</p>
                 <p class="price">Price: ₹499</p>
-                <div class="actions">
+<!--                 <div class="actions">
                     <label for="quantity">Quantity:</label>
                     <select id="quantity">
                         ${[...Array(9)].map((_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
                     </select>
                     <button id="add-to-cart" data-name="Jamdani Blue Saree" data-price="499">Add to Cart</button>
+                </div> -->
+
+                <div class="modal-actions">
+                    <label for="modal-qty">Quantity: </label>
+                    <select id="modal-qty"></select> <!-- Remove JavaScript logic from HTML -->
+                    <button id="modal-add-to-cart" data-name="Jamdani Blue Saree" data-price="499">Add to Cart</button>
                 </div>
             </section>
         </div>
