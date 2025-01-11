@@ -697,6 +697,19 @@ button.add-to-cart:hover {
     margin: 20px;
 }
 
+.product-info .actions {
+    margin-top: 20px;
+}
+
+.product-info .actions button,
+.product-info .actions select {
+    margin-top: 10px;
+}
+
+#out-of-stock-message {
+    margin-top: 10px;
+}
+
 /* Top Section: Left and Right */
 .top-section {
     display: flex;
