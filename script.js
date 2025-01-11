@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         handleOutOfStock();
     }
 
-    const quantityDropdown = document.getElementById("quantity");
+    const quantityDropdown = document.getElementById("modal-qty"); // Corrected ID
 
     if (quantityDropdown) {
         // Populate the quantity dropdown with numbers 1 to 9
