@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendOrderButton = document.getElementById('send-order');
 
     // User Details Form
+    const userDetailsModal = document.getElementById('user-details-modal');
+    const closeUserDetailsModal = document.getElementById('close-user-modal');
     const userDetailsForm = document.getElementById('user-details-form');
 
     let cart = []; // To track cart items
@@ -78,6 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
     sendOrderButton.addEventListener('click', () => {
         mobileCart.classList.remove('expanded'); // Collapse the cart tray
         userDetailsModal.style.display = 'flex'; // Show the user details modal
+    });
+
+    // Close User Details Modal
+    closeUserDetailsModal.addEventListener('click', () => {
+        userDetailsModal.style.display = 'none';
     });
 
     // Process User Details and Send Order
