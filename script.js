@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeModal = document.querySelector('.close');
 
     // Selectors for product page
-    const addToCartButton = document.getElementById('add-to-cart');
+    // const addToCartButton = document.getElementById('add-to-cart');
+    const addToCartButton = document.getElementById("modal-add-to-cart");
     const quantityDropdown = document.getElementById('quantity');
     const outOfStockMessage = document.getElementById('out-of-stock-message');
     const cartItemsContainer = document.getElementById('cart-items');
