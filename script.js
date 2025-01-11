@@ -60,16 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Expand/Collapse Cart Tray for Mobile View
-        cartToggle.addEventListener('click', () => {
-            mobileCart.classList.toggle('expanded');
-        });
+        // // Expand/Collapse Cart Tray for Mobile View
+        // cartToggle.addEventListener('click', () => {
+        //     mobileCart.classList.toggle('expanded');
+        // });
     
-        // Open User Details Modal and Collapse Cart Tray
-        sendOrderButton.addEventListener('click', () => {
-            mobileCart.classList.remove('expanded'); // Collapse the cart tray
-            userDetailsModal.style.display = 'flex'; // Show the user details modal
-        });
+        // // Open User Details Modal and Collapse Cart Tray
+        // sendOrderButton.addEventListener('click', () => {
+        //     mobileCart.classList.remove('expanded'); // Collapse the cart tray
+        //     userDetailsModal.style.display = 'flex'; // Show the user details modal
+        // });
     }
 
     // Function to Send Email
