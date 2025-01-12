@@ -384,6 +384,41 @@ button.add-to-cart:hover {
 
 /* Mobile View Adjustments */
 @media (max-width: 768px) {
+    /* Reduce the size of the product image */
+    .product-image-section img {
+        max-width: 80%; /* Adjust the image size */
+        max-height: 300px; /* Limit height */
+        margin: 0 auto; /* Center the image */
+        display: block;
+    }
+    /* Adjust the right section layout */
+    .product-info {
+        text-align: center; /* Center-align text for better visibility */
+        padding: 10px; /* Add padding for spacing */
+    }
+
+    .product-info h1 {
+        font-size: 1.2rem; /* Reduce font size of the product title */
+    }
+
+    .product-info .description {
+        font-size: 0.9rem; /* Reduce font size for description */
+    }
+
+    .product-info .price {
+        font-size: 1rem; /* Reduce font size for price */
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    /* Shift Add to Cart button below the quantity dropdown */
+    .modal-actions {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements */
+        gap: 10px; /* Add spacing between elements */
+    }
+    
      .cart {
         position: fixed;
         bottom: 10px;
