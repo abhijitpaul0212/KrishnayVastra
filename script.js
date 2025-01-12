@@ -79,10 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Expand/Collapse Cart Tray for Mobile View
-    cartToggle.addEventListener('click', () => {
-        mobileCart.classList.toggle('expanded');
-    });
+    // Expand/Collapse Cart Tray for Mobile View (only if cart toggle exists)
+    if (cartToggle) {
+        cartToggle.addEventListener('click', () => {
+            if (mobileCart) mobileCart.classList.toggle('expanded');
+        });
+    }
 
     // Open User Details Modal and Collapse Cart Tray
     sendOrderButton.addEventListener('click', () => {
