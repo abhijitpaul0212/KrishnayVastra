@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // const addToCartButton = document.getElementById('add-to-cart');
     const addToCartButton = document.getElementById("modal-add-to-cart");
     const quantityDropdown = document.getElementById('quantity');
-    // const quantityDropdown = document.getElementById("modal-qty"); // Corrected ID
+    
     const outOfStockMessage = document.getElementById('out-of-stock-message');
     const cartItemsContainer = document.getElementById('cart-items');
 
@@ -56,9 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Dropdown Fix: Ensure it has values 1–9
-    quantityDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
-
+    // Populate the quantity dropdown with numbers 1–9
+    if (quantityDropdown) {
+        quantityDropdown.innerHTML = Array.from({ length: 9 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+    }
 
     // Add to Cart Logic on Product Page
     if (addToCartButton) {
@@ -225,13 +226,4 @@ document.addEventListener("DOMContentLoaded", () => {
         handleOutOfStock();
     }
 
-    // if (quantityDropdown) {
-    //     // Populate the quantity dropdown with numbers 1 to 9
-    //     for (let i = 1; i <= 9; i++) {
-    //         const option = document.createElement("option");
-    //         option.value = i;
-    //         option.textContent = i;
-    //         quantityDropdown.appendChild(option);
-    //     }
-    // }
 });
