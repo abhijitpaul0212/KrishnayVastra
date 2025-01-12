@@ -386,8 +386,8 @@ button.add-to-cart:hover {
 @media (max-width: 768px) {
     /* Reduce the size of the product image */
     .product-image-section img {
-        max-width: 80%; /* Adjust the image size */
-        max-height: 300px; /* Limit height */
+        max-width: 70%; /* Adjust the image size */
+        max-height: 250px; /* Limit height */
         margin: 0 auto; /* Center the image */
         display: block;
     }
