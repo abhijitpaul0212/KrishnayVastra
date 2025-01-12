@@ -387,7 +387,7 @@ button.add-to-cart:hover {
     
     /* Product Image Section: Resize and Align Left */
     .product-image-section {
-        width: 40%; /* Allocate 40% width for the image section */
+        width: 30%; /* Allocate 40% width for the image section */
         display: inline-block; /* Ensure it's inline with the right section */
         vertical-align: top; /* Align the image section at the top */
         text-align: center; /* Center the image within the section */
@@ -396,7 +396,7 @@ button.add-to-cart:hover {
     
     /* Reduce the size of the product image */
     .product-image-section img {
-        max-width: 90%; /* Slightly smaller image width */
+        max-width: 70%; /* Slightly smaller image width */
         max-height: 200px; /* Reduced height for better spacing */
         display: block;
         margin: 0 auto;
