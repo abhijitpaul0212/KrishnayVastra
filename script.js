@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Enable zoom functionality for the main product image
     if (mainProductImage) {
         mainProductImage.addEventListener('click', () => {
-            modal.style.display = 'flex';
-            modalImage.src = mainProductImage.src;
+            // modal.style.display = 'flex';
+            // modalImage.src = mainProductImage.src;
             if (!mainProductImage.classList.contains('zoomed')) {
                 // Apply zoom
                 mainProductImage.classList.add('zoomed');
