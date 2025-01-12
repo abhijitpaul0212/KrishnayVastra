@@ -384,38 +384,53 @@ button.add-to-cart:hover {
 
 /* Mobile View Adjustments */
 @media (max-width: 768px) {
+    
+    /* Product Image Section: Resize and Align Left */
+    .product-image-section {
+        width: 40%; /* Allocate 40% width for the image section */
+        display: inline-block; /* Ensure it's inline with the right section */
+        vertical-align: top; /* Align the image section at the top */
+        text-align: center; /* Center the image within the section */
+        padding: 5px;
+    }
+    
     /* Reduce the size of the product image */
     .product-image-section img {
-        max-width: 70%; /* Adjust the image size */
-        max-height: 250px; /* Limit height */
-        margin: 0 auto; /* Center the image */
+        max-width: 90%; /* Slightly smaller image width */
+        max-height: 200px; /* Reduced height for better spacing */
         display: block;
+        margin: 0 auto;
     }
     /* Adjust the right section layout */
     .product-info {
-        text-align: center; /* Center-align text for better visibility */
-        padding: 10px; /* Add padding for spacing */
+        width: 55%; /* Allocate 55% width for the right section */
+        display: inline-block; /* Ensure it sits next to the image section */
+        vertical-align: top; /* Align the text section at the top */
+        text-align: left; /* Align text to the left */
+        padding: 10px; /* Add spacing */
     }
 
     .product-info h1 {
         font-size: 1.2rem; /* Reduce font size of the product title */
+        margin-bottom: 8px; /* Add spacing below title */
     }
 
     .product-info .description {
         font-size: 0.9rem; /* Reduce font size for description */
+        margin-bottom: 8px; /* Add spacing below description */
     }
 
     .product-info .price {
         font-size: 1rem; /* Reduce font size for price */
         font-weight: bold;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
     
     /* Shift Add to Cart button below the quantity dropdown */
     .modal-actions {
         display: flex;
         flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center elements */
+        align-items: flex-start; /* Align dropdown and button to the left */
         gap: 10px; /* Add spacing between elements */
     }
     
