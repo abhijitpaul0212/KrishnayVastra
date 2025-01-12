@@ -32,6 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
         mainProductImage.addEventListener('click', () => {
             modal.style.display = 'flex';
             modalImage.src = mainProductImage.src;
+            if (!mainProductImage.classList.contains('zoomed')) {
+                // Apply zoom
+                mainProductImage.classList.add('zoomed');
+            } else {
+                // Remove zoom
+                mainProductImage.classList.remove('zoomed');
+            }
         });
     }
 
