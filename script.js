@@ -240,4 +240,24 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error('Error loading common head:', error));
 
+    // Function to load external HTML into a container
+    function loadHTML(selector, file) {
+        fetch(file)
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error(`Could not load file: ${file}`);
+            })
+            .then(html => {
+                document.querySelector(selector).innerHTML = html;
+            })
+            .catch(error => console.error(error));
+    }
+
+    // Load header, footer, and cart
+    loadHTML("header", "../common/header.html");
+    loadHTML("footer", "../common/footer.html");
+    loadHTML(".cart", "../common/cart.html");
+
 });
