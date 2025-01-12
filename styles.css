@@ -793,3 +793,19 @@ button.add-to-cart:hover {
     text-align: center;
     margin-top: 5px;
 }
+
+/* Base styles for the product image */
+#main-product-image {
+    max-width: 300px;
+    max-height: 400px;
+    transition: transform 0.3s ease-in-out;
+    cursor: zoom-in;
+}
+
+/* Zoomed-in styles */
+#main-product-image.zoomed {
+    transform: scale(2); /* Zoom in by 2x */
+    cursor: zoom-out;
+    z-index: 10;
+    position: relative;
+}
