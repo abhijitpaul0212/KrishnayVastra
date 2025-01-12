@@ -829,7 +829,8 @@ button.add-to-cart:hover {
 
 .related-products img {
     width: 100px;
-    height: auto;
+    height: 100px; /* Ensures equal height and width */
+    object-fit: cover; /* Crops the image while maintaining aspect ratio */
     border: 1px solid #ddd;
     border-radius: 5px;
     transition: transform 0.2s;
