@@ -228,4 +228,16 @@ document.addEventListener("DOMContentLoaded", () => {
         handleOutOfStock();
     }
 
+    fetch('../common/common-head.html')
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error(`Error loading common-head.html: ${response.statusText}`);
+        })
+        .then(html => {
+            document.head.innerHTML += html;
+        })
+        .catch(error => console.error('Error loading common head:', error));
+
 });
